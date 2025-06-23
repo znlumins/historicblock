@@ -18,6 +18,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        quicksand: ["Quicksand", "sans-serif"],
+        merriweather: ["Merriweather", "serif"],
+        georgia: ["Georgia", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -61,6 +66,17 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+        // Historic Block custom colors
+        historic: {
+          brown: "#654321",
+          "brown-dark": "#8b4513",
+          cream: "#f7f3e9",
+          "cream-light": "#e8dcc0",
+          yellow: "#facc15",
+          orange: "#f97316",
+          "yellow-light": "#fef9c3",
+          "yellow-pale": "#fef08a",
         },
       },
       borderRadius: {
