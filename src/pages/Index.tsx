@@ -10,36 +10,9 @@ const Index = () => {
       />
 
       {/* Header */}
-      <header className="w-full h-[110px] bg-historic-brown border-b-4 border-historic-brown-dark shadow-lg flex justify-center items-center px-20 relative">
-        <nav className="flex items-center gap-8">
-          <Link
-            to="/"
-            className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
-          >
-            Beranda
-          </Link>
-          <Link
-            to="/kuis"
-            className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
-          >
-            Kuis
-          </Link>
-          <Link
-            to="/leaderboard"
-            className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
-          >
-            Leaderboard
-          </Link>
-          <Link
-            to="/tutorial"
-            className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
-          >
-            Tutorial Gameplay
-          </Link>
-        </nav>
-
-        {/* User Profile Section */}
-        <div className="absolute right-20 top-5 flex items-center gap-5">
+      <header className="w-full h-[110px] bg-historic-brown border-b-4 border-historic-brown-dark shadow-lg flex justify-between items-center px-20 relative">
+        {/* Left side - Logo and Navigation */}
+        <div className="flex items-center gap-8">
           {/* Historic Block Logo */}
           <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/507170e63ed72fa0abf94c821deabb0a1109b706?placeholderIfAbsent=true"
@@ -47,6 +20,36 @@ const Index = () => {
             className="w-[62px] h-[62px]"
           />
 
+          <nav className="flex items-center gap-8">
+            <Link
+              to="/"
+              className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
+            >
+              Beranda
+            </Link>
+            <Link
+              to="/kuis"
+              className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
+            >
+              Kuis
+            </Link>
+            <Link
+              to="/leaderboard"
+              className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
+            >
+              Leaderboard
+            </Link>
+            <Link
+              to="/tutorial"
+              className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
+            >
+              Tutorial Gameplay
+            </Link>
+          </nav>
+        </div>
+
+        {/* Right side - User Profile Section */}
+        <div className="flex items-center">
           {/* User Profile Card */}
           <div className="bg-gradient-to-r from-historic-yellow to-historic-orange rounded-md border-0 w-52 h-10 relative">
             <div className="absolute left-2 top-2 flex items-center gap-1.5">
