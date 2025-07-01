@@ -84,10 +84,10 @@ const Navbar = () => {
                   : "text-white hover:text-historic-yellow-light"
               }`}
             >
-              Tutorial
+              Tutorial Gameplay
             </Link>
             <Link
-              to="/leaderboard"
+              to="/login"
               className={`font-quicksand text-base transition-colors ${
                 isActive("/leaderboard")
                   ? "text-historic-yellow-light font-bold"
