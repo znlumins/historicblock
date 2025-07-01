@@ -79,27 +79,42 @@ const Index = () => {
               bersejarah dan asah kemampuan Anda!
             </p>
 
-            <button className="inline-flex items-center gap-2 px-14 py-5 bg-historic-brown-dark border-2 border-historic-brown rounded-lg shadow-lg hover:bg-historic-brown transition-colors">
-              <svg
-                width="23"
-                height="23"
-                viewBox="0 0 23 23"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            {isAuthenticated ? (
+              <Link
+                to="/kuis"
+                className="inline-flex items-center gap-2 px-14 py-5 bg-historic-brown-dark border-2 border-historic-brown rounded-lg shadow-lg hover:bg-historic-brown transition-colors"
               >
-                <path
-                  d="M20.8078 17.5267H21.9075V20.8114H20.8078V17.5267ZM20.8078 2.18857H21.9075V5.48044H20.8078V2.18857ZM17.5231 1.09607H20.8078V2.18857H17.5231V1.09607ZM17.5231 20.8114H20.8078V21.9039H17.5231V20.8114ZM18.6156 4.38435H4.3772V18.6228H18.6156V4.38435ZM14.2384 9.86123H15.3309V13.1459H12.0463V12.0534H14.2384V9.86123ZM9.85407 5.48404H13.1388V6.57654H9.85407V5.48404ZM9.85407 7.66904H13.1388V10.9537H12.0463V8.76872H9.85407V7.66904ZM9.85407 9.86123H10.9538V13.1459H9.85407V9.86123ZM8.76157 17.5303H5.47688V14.2456H8.76157V17.5303ZM8.76157 12.0534H6.56938V13.1459H5.47688V9.86123H6.56938V10.9537H8.76157V12.0534ZM8.76157 9.86123H7.66907V7.66904H8.76157V9.86123ZM8.76157 6.57654H6.56938V8.76872H5.47688V5.48044H8.76157V6.57654ZM13.1388 17.5303H12.0463V16.4306H13.1388V17.5303ZM13.1388 15.3381H10.9538V17.5303H9.85407V14.2456H13.1388V15.3381ZM17.5231 17.5303H14.2384V14.2456H17.5231V17.5303ZM17.5231 13.1459H16.4306V9.86123H17.5231V13.1459ZM17.5231 8.76872H14.2384V5.48044H17.5231V8.76872Z"
-                  fill="white"
-                />
-                <path
-                  d="M15.331 15.3345H16.4307V16.427H15.331V15.3345ZM15.331 6.57294H16.4307V7.66544H15.331V6.57294ZM6.5694 15.3345H7.66909V16.427H6.5694V15.3345ZM2.19222 20.8114H5.4769V21.9039H2.19222V20.8114ZM2.19222 1.09607H5.4769V2.18857H2.19222V1.09607ZM1.09253 17.5267H2.19222V20.8114H1.09253V17.5267ZM1.09253 2.18857H2.19222V5.48044H1.09253V2.18857Z"
-                  fill="white"
-                />
-              </svg>
-              <span className="font-merriweather font-bold text-[15.926px] text-historic-cream">
-                Mulai Kuis
-              </span>
-            </button>
+                <svg
+                  width="23"
+                  height="23"
+                  viewBox="0 0 23 23"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.8078 17.5267H21.9075V20.8114H20.8078V17.5267ZM20.8078 2.18857H21.9075V5.48044H20.8078V2.18857ZM17.5231 1.09607H20.8078V2.18857H17.5231V1.09607ZM17.5231 20.8114H20.8078V21.9039H17.5231V20.8114ZM18.6156 4.38435H4.3772V18.6228H18.6156V4.38435ZM14.2384 9.86123H15.3309V13.1459H12.0463V12.0534H14.2384V9.86123ZM9.85407 5.48404H13.1388V6.57654H9.85407V5.48404ZM9.85407 7.66904H13.1388V10.9537H12.0463V8.76872H9.85407V7.66904ZM9.85407 9.86123H10.9538V13.1459H9.85407V9.86123ZM8.76157 17.5303H5.47688V14.2456H8.76157V17.5303ZM8.76157 12.0534H6.56938V13.1459H5.47688V9.86123H6.56938V10.9537H8.76157V12.0534ZM8.76157 9.86123H7.66907V7.66904H8.76157V9.86123ZM8.76157 6.57654H6.56938V8.76872H5.47688V5.48044H8.76157V6.57654ZM13.1388 17.5303H12.0463V16.4306H13.1388V17.5303ZM13.1388 15.3381H10.9538V17.5303H9.85407V14.2456H13.1388V15.3381ZM17.5231 17.5303H14.2384V14.2456H17.5231V17.5303ZM17.5231 13.1459H16.4306V9.86123H17.5231V13.1459ZM17.5231 8.76872H14.2384V5.48044H17.5231V8.76872Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M15.331 15.3345H16.4307V16.427H15.331V15.3345ZM15.331 6.57294H16.4307V7.66544H15.331V6.57294ZM6.5694 15.3345H7.66909V16.427H6.5694V15.3345ZM2.19222 20.8114H5.4769V21.9039H2.19222V20.8114ZM2.19222 1.09607H5.4769V2.18857H2.19222V1.09607ZM1.09253 17.5267H2.19222V20.8114H1.09253V17.5267ZM1.09253 2.18857H2.19222V5.48044H1.09253V2.18857Z"
+                    fill="white"
+                  />
+                </svg>
+                <span className="font-merriweather font-bold text-[15.926px] text-historic-cream">
+                  Mulai Kuis
+                </span>
+              </Link>
+            ) : (
+              <Link
+                to="/register"
+                className="inline-flex items-center gap-2 px-14 py-5 bg-historic-brown-dark border-2 border-historic-brown rounded-lg shadow-lg hover:bg-historic-brown transition-colors"
+              >
+                <span className="text-2xl">🚀</span>
+                <span className="font-merriweather font-bold text-[15.926px] text-historic-cream">
+                  Daftar & Mulai
+                </span>
+              </Link>
+            )}
           </div>
         </div>
       </section>
