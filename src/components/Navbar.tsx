@@ -103,22 +103,7 @@ const Navbar = () => {
       {/* Right side - Auth Actions */}
       <div className="flex items-center ml-auto">
         {isAuthenticated && user ? (
-          <div className="flex items-center gap-4">
-            <Link
-              to="/kuis"
-              className="bg-gradient-to-r from-historic-yellow to-historic-orange hover:from-historic-orange hover:to-historic-yellow text-white font-quicksand px-6 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl flex items-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Mulai Kuis
-            </Link>
-            <UserDropdown userName={user.name} userLevel={user.level} />
-          </div>
+          <UserDropdown userName={user.name} userLevel={user.level} />
         ) : (
           <div className="flex items-center gap-4">
             <Link
@@ -129,11 +114,8 @@ const Navbar = () => {
             </Link>
             <Link
               to="/register"
-              className="bg-gradient-to-r from-historic-yellow to-historic-orange hover:from-historic-orange hover:to-historic-yellow text-white font-quicksand px-6 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl flex items-center gap-2"
+              className="bg-gradient-to-r from-historic-yellow to-historic-orange hover:from-historic-orange hover:to-historic-yellow text-white font-quicksand px-6 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
-              </svg>
               Daftar
             </Link>
           </div>
