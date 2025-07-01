@@ -26,6 +26,10 @@ const App = () => (
           <Route path="/kuis" element={<Kuis />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/tutorial" element={<Tutorial />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/stats" element={<Stats />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/settings" element={<Settings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
