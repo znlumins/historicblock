@@ -7,6 +7,10 @@ import Index from "./pages/Index";
 import Kuis from "./pages/Kuis";
 import Leaderboard from "./pages/Leaderboard";
 import Tutorial from "./pages/Tutorial";
+import Profile from "./pages/Profile";
+import Stats from "./pages/Stats";
+import Achievements from "./pages/Achievements";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
