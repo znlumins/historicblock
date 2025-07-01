@@ -8,9 +8,10 @@ interface UserDropdownProps {
   onLogout?: () => void;
 }
 
-const UserDropdown = ({ userName, userLevel, onLogout }: UserDropdownProps) => {
+const UserDropdown = ({ userName, userLevel }: UserDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { logout } = useAuth();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -35,13 +36,7 @@ const UserDropdown = ({ userName, userLevel, onLogout }: UserDropdownProps) => {
   ];
 
   const handleLogout = () => {
-    if (onLogout) {
-      onLogout();
-    } else {
-      // Default logout behavior
-      localStorage.removeItem("user");
-      window.location.href = "/";
-    }
+    logout();
     setIsOpen(false);
   };
 
