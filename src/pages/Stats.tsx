@@ -10,49 +10,7 @@ const Stats = () => {
       />
 
       {/* Header */}
-      <header className="w-full h-[110px] bg-historic-brown border-b-4 border-historic-brown-dark shadow-lg flex items-center px-20 relative">
-        <div className="flex items-center">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/507170e63ed72fa0abf94c821deabb0a1109b706?placeholderIfAbsent=true"
-            alt="HISTORIC BLOCK"
-            className="w-[62px] h-[62px]"
-          />
-        </div>
-
-        <nav className="flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
-          <Link
-            to="/"
-            className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
-          >
-            Beranda
-          </Link>
-          <Link
-            to="/kuis"
-            className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
-          >
-            Kuis
-          </Link>
-          <Link
-            to="/leaderboard"
-            className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
-          >
-            Leaderboard
-          </Link>
-          <Link
-            to="/tutorial"
-            className="text-white font-quicksand text-base hover:text-historic-yellow-light transition-colors"
-          >
-            Tutorial Gameplay
-          </Link>
-        </nav>
-
-        <div className="flex items-center ml-auto">
-          <UserDropdown
-            userName="Daffa Ahmad Al Attas"
-            userLevel="Level 15 • Master"
-          />
-        </div>
-      </header>
+      <Navbar />
 
       {/* Main Content */}
       <div className="flex-1 bg-gradient-to-r from-historic-cream-light to-historic-cream py-20 px-20">
