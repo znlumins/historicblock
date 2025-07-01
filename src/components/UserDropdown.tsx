@@ -5,7 +5,6 @@ import { useAuth } from "@/contexts/AuthContext";
 interface UserDropdownProps {
   userName: string;
   userLevel: string;
-  onLogout?: () => void;
 }
 
 const UserDropdown = ({ userName, userLevel }: UserDropdownProps) => {
