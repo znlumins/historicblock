@@ -80,8 +80,9 @@ const Settings = () => {
                     </label>
                     <input
                       type="text"
-                      value="Daffa Ahmad Al Attas"
+                      defaultValue="Daffa Ahmad Al Attas"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand"
+                      onChange={() => {}}
                     />
                   </div>
                   <div>
@@ -90,8 +91,9 @@ const Settings = () => {
                     </label>
                     <input
                       type="email"
-                      value="daffa.ahmad@example.com"
+                      defaultValue="daffa.ahmad@example.com"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand"
+                      onChange={() => {}}
                     />
                   </div>
                 </div>
