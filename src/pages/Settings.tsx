@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import UserDropdown from "@/components/UserDropdown";
+import Navbar from "@/components/Navbar";
 
 const Settings = () => {
   return (
