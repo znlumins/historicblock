@@ -224,11 +224,15 @@ const Settings = () => {
                   <label className="block font-quicksand font-semibold text-gray-700 mb-2">
                     Tingkat kesulitan default
                   </label>
-                  <select className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand">
-                    <option>Mudah</option>
-                    <option selected>Sedang</option>
-                    <option>Sulit</option>
-                    <option>Expert</option>
+                  <select
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand"
+                    defaultValue="Sedang"
+                    onChange={() => {}}
+                  >
+                    <option value="Mudah">Mudah</option>
+                    <option value="Sedang">Sedang</option>
+                    <option value="Sulit">Sulit</option>
+                    <option value="Expert">Expert</option>
                   </select>
                 </div>
               </div>
