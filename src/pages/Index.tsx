@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import UserDropdown from "@/components/UserDropdown";
+import { useAuth } from "@/contexts/AuthContext";
+import Navbar from "@/components/Navbar";
 
 const Index = () => {
   return (
