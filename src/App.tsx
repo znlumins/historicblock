@@ -94,6 +94,42 @@ const App = () => (
               }
             />
 
+            {/* Quiz Routes */}
+            <Route
+              path="/quiz/:quizId"
+              element={
+                <ProtectedRoute>
+                  <QuizInterface />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/quiz-results/:resultId"
+              element={
+                <ProtectedRoute>
+                  <QuizResults />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Admin Routes */}
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
