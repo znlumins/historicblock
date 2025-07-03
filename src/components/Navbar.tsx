@@ -110,8 +110,8 @@ const Navbar = () => {
           )}
         </nav>
 
-        {/* Right side - Auth Actions (Desktop) and Mobile Menu Button */}
-        <div className="flex items-center ml-auto gap-4">
+          {/* Right side - Auth Actions and Mobile Menu Button */}
+          <div className="flex items-center gap-4 lg:w-64 justify-end">
           {/* Desktop Auth Actions - Hidden on mobile/tablet */}
           <div className="hidden lg:flex items-center">
             {isAuthenticated && user ? (
