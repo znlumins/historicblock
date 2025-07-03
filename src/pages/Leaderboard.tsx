@@ -326,7 +326,11 @@ const Leaderboard = () => {
                 🎯 Mulai Quiz
               </Link>
               <button
-                onClick={loadLeaderboard}
+                onClick={() => {
+                  // Force clear old data and load fresh
+                  localStorage.removeItem("leaderboard");
+                  loadLeaderboard();
+                }}
                 className="inline-block px-8 py-3 border border-historic-brown text-historic-brown rounded-lg font-quicksand hover:bg-historic-cream transition-colors"
               >
                 🔄 Refresh
