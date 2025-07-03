@@ -19,7 +19,6 @@ const Settings = () => {
     showNameInLeaderboard: true,
     publicProfile: true,
     soundEffects: true,
-    darkMode: false,
     dailyQuizNotification: true,
     leaderboardUpdate: true,
   });
