@@ -10,7 +10,7 @@ interface UserDropdownProps {
 const UserDropdown = ({ userName, userLevel }: UserDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   // Close dropdown when clicking outside
   useEffect(() => {
