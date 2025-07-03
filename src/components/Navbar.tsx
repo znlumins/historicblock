@@ -168,32 +168,53 @@ const Navbar = () => {
         <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-50">
           <div className="bg-historic-brown w-full max-w-sm h-full shadow-lg overflow-y-auto">
             {/* Mobile Menu Header */}
-            <div className="flex items-center justify-between p-4 border-b border-historic-brown-dark">
-              <Link to="/" onClick={closeMobileMenu}>
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/507170e63ed72fa0abf94c821deabb0a1109b706?placeholderIfAbsent=true"
-                  alt="HISTORIC BLOCK"
-                  className="w-[40px] h-[40px]"
-                />
-              </Link>
-              <button
-                onClick={closeMobileMenu}
-                className="text-white hover:text-historic-yellow-light transition-colors p-2"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
+            <div className="p-4 border-b border-historic-brown-dark">
+              <div className="flex items-center justify-between mb-4">
+                <Link to="/" onClick={closeMobileMenu}>
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/507170e63ed72fa0abf94c821deabb0a1109b706?placeholderIfAbsent=true"
+                    alt="HISTORIC BLOCK"
+                    className="w-[40px] h-[40px]"
                   />
-                </svg>
-              </button>
+                </Link>
+                <button
+                  onClick={closeMobileMenu}
+                  className="text-white hover:text-historic-yellow-light transition-colors p-2"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* User Profile Info in Mobile Menu */}
+              {isAuthenticated && user && (
+                <div className="flex items-center gap-3 bg-historic-brown-dark rounded-lg p-3">
+                  <div className="w-12 h-12 bg-historic-yellow rounded-full flex items-center justify-center">
+                    <span className="font-quicksand font-bold text-historic-brown-dark text-lg">
+                      {user.name.charAt(0)}
+                    </span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-quicksand font-bold text-white text-sm">
+                      {user.name}
+                    </div>
+                    <div className="font-quicksand text-historic-yellow-light text-xs">
+                      {user.level}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Mobile Menu Content */}
