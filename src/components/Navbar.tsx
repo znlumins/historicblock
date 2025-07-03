@@ -112,7 +112,7 @@ const Navbar = () => {
         {/* Right side - Auth Actions (Desktop) and Mobile Menu Button */}
         <div className="flex items-center ml-auto gap-4">
           {/* Desktop Auth Actions - Hidden on mobile/tablet */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center">
             {isAuthenticated && user ? (
               <UserDropdown userName={user.name} userLevel={user.level} />
             ) : (
