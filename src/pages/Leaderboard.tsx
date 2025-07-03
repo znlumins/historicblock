@@ -337,7 +337,7 @@ const Leaderboard = () => {
       </section>
 
       {/* Footer */}
-      <footer className="w-full bg-historic-brown border-t-4 border-historic-brown-dark py-9 px-36">
+      <footer className="w-full bg-historic-brown border-t-4 border-historic-brown-dark py-6 md:py-9 px-4 md:px-8 lg:px-36">
         <div className="max-w-6xl mx-auto text-center relative">
           {/* Logo */}
           <img
