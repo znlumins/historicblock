@@ -38,7 +38,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation - Hidden on mobile/tablet */}
-        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2 whitespace-nowrap">
           <Link
             to="/"
             className={`font-quicksand text-base transition-colors ${
@@ -286,7 +286,7 @@ const Navbar = () => {
                     }}
                     className="block w-full font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700 transition-colors text-left"
                   >
-                    {theme === "dark" ? "☀️ Mode Terang" : "🌙 Mode Gelap"}
+                    {theme === "dark" ? "☀️ Mode Terang" : "�� Mode Gelap"}
                   </button>
 
                   {/* User Menu Items for Mobile */}
