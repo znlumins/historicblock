@@ -94,6 +94,36 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       localStorage.setItem("historic_block_user", JSON.stringify(userData));
       setLoading(false);
       return true;
+    } else if (email === "adenia@historic.com" && password === "adenia123") {
+      const userData = {
+        id: "3",
+        name: "Adenia Raesita",
+        email: "adenia@historic.com",
+        level: "Level 11 • Advanced",
+        points: 1950,
+        avatar: null,
+        role: "user" as const,
+      };
+
+      setUser(userData);
+      localStorage.setItem("historic_block_user", JSON.stringify(userData));
+      setLoading(false);
+      return true;
+    } else if (email === "aymarda@historic.com" && password === "aymarda123") {
+      const userData = {
+        id: "4",
+        name: "Aymardayanti Pagril",
+        email: "aymarda@historic.com",
+        level: "Level 12 • Expert",
+        points: 2180,
+        avatar: null,
+        role: "user" as const,
+      };
+
+      setUser(userData);
+      localStorage.setItem("historic_block_user", JSON.stringify(userData));
+      setLoading(false);
+      return true;
     } else if (email === "user@test.com" && password === "test123") {
       const userData = {
         id: "2",
