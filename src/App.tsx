@@ -131,6 +131,30 @@ const App = () => (
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/admin/quizzes"
+              element={
+                <ProtectedRoute>
+                  <AdminQuizzes />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/users"
+              element={
+                <ProtectedRoute>
+                  <AdminUsers />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/analytics"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
