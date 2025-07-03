@@ -243,6 +243,10 @@ const AdminQuizzes = () => {
                     </label>
                     <input
                       type="text"
+                      value={newQuiz.title}
+                      onChange={(e) =>
+                        setNewQuiz({ ...newQuiz, title: e.target.value })
+                      }
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand"
                       placeholder="Masukkan judul kuis..."
                     />
@@ -252,6 +256,10 @@ const AdminQuizzes = () => {
                       Deskripsi
                     </label>
                     <textarea
+                      value={newQuiz.description}
+                      onChange={(e) =>
+                        setNewQuiz({ ...newQuiz, description: e.target.value })
+                      }
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand"
                       rows={3}
                       placeholder="Masukkan deskripsi kuis..."
@@ -262,7 +270,13 @@ const AdminQuizzes = () => {
                       <label className="block font-quicksand font-semibold text-gray-700 mb-2">
                         Era
                       </label>
-                      <select className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand">
+                      <select
+                        value={newQuiz.era}
+                        onChange={(e) =>
+                          setNewQuiz({ ...newQuiz, era: e.target.value })
+                        }
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand"
+                      >
                         <option>Kemerdekaan</option>
                         <option>Hindu-Buddha</option>
                         <option>Kolonial</option>
@@ -273,7 +287,20 @@ const AdminQuizzes = () => {
                       <label className="block font-quicksand font-semibold text-gray-700 mb-2">
                         Tingkat Kesulitan
                       </label>
-                      <select className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand">
+                      <select
+                        value={newQuiz.difficulty}
+                        onChange={(e) =>
+                          setNewQuiz({
+                            ...newQuiz,
+                            difficulty: e.target.value as
+                              | "Mudah"
+                              | "Sedang"
+                              | "Sulit"
+                              | "Expert",
+                          })
+                        }
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand"
+                      >
                         <option>Mudah</option>
                         <option>Sedang</option>
                         <option>Sulit</option>
