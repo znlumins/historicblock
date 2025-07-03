@@ -38,131 +38,132 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation - Hidden on mobile/tablet */}
+          {/* Center - Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8 justify-center flex-1">
-          <Link
-            to="/"
-            className={`font-quicksand text-base transition-colors ${
-              isActive("/")
-                ? "text-historic-yellow-light font-bold"
-                : "text-white hover:text-historic-yellow-light"
-            }`}
-          >
-            Beranda
-          </Link>
+            <Link
+              to="/"
+              className={`font-quicksand text-base transition-colors ${
+                isActive("/")
+                  ? "text-historic-yellow-light font-bold"
+                  : "text-white dark:text-gray-200 hover:text-historic-yellow-light"
+              }`}
+            >
+              Beranda
+            </Link>
 
-          {isAuthenticated ? (
-            <>
-              <Link
-                to="/kuis"
-                className={`font-quicksand text-base transition-colors ${
-                  isActive("/kuis")
-                    ? "text-historic-yellow-light font-bold"
-                    : "text-white hover:text-historic-yellow-light"
-                }`}
-              >
-                Kuis
-              </Link>
-              <Link
-                to="/leaderboard"
-                className={`font-quicksand text-base transition-colors ${
-                  isActive("/leaderboard")
-                    ? "text-historic-yellow-light font-bold"
-                    : "text-white hover:text-historic-yellow-light"
-                }`}
-              >
-                Leaderboard
-              </Link>
-              <Link
-                to="/tutorial"
-                className={`font-quicksand text-base transition-colors ${
-                  isActive("/tutorial")
-                    ? "text-historic-yellow-light font-bold"
-                    : "text-white hover:text-historic-yellow-light"
-                }`}
-              >
-                Tutorial Gameplay
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/tutorial"
-                className={`font-quicksand text-base transition-colors ${
-                  isActive("/tutorial")
-                    ? "text-historic-yellow-light font-bold"
-                    : "text-white hover:text-historic-yellow-light"
-                }`}
-              >
-                Tutorial Gameplay
-              </Link>
-              <Link
-                to="/login"
-                className={`font-quicksand text-base transition-colors ${
-                  isActive("/leaderboard")
-                    ? "text-historic-yellow-light font-bold"
-                    : "text-white hover:text-historic-yellow-light"
-                }`}
-              >
-                Leaderboard
-              </Link>
-            </>
-          )}
-        </nav>
+            {isAuthenticated ? (
+              <>
+                <Link
+                  to="/kuis"
+                  className={`font-quicksand text-base transition-colors ${
+                    isActive("/kuis")
+                      ? "text-historic-yellow-light font-bold"
+                      : "text-white dark:text-gray-200 hover:text-historic-yellow-light"
+                  }`}
+                >
+                  Kuis
+                </Link>
+                <Link
+                  to="/leaderboard"
+                  className={`font-quicksand text-base transition-colors ${
+                    isActive("/leaderboard")
+                      ? "text-historic-yellow-light font-bold"
+                      : "text-white dark:text-gray-200 hover:text-historic-yellow-light"
+                  }`}
+                >
+                  Leaderboard
+                </Link>
+                <Link
+                  to="/tutorial"
+                  className={`font-quicksand text-base transition-colors ${
+                    isActive("/tutorial")
+                      ? "text-historic-yellow-light font-bold"
+                      : "text-white dark:text-gray-200 hover:text-historic-yellow-light"
+                  }`}
+                >
+                  Tutorial Gameplay
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/tutorial"
+                  className={`font-quicksand text-base transition-colors ${
+                    isActive("/tutorial")
+                      ? "text-historic-yellow-light font-bold"
+                      : "text-white dark:text-gray-200 hover:text-historic-yellow-light"
+                  }`}
+                >
+                  Tutorial Gameplay
+                </Link>
+                <Link
+                  to="/login"
+                  className={`font-quicksand text-base transition-colors ${
+                    isActive("/leaderboard")
+                      ? "text-historic-yellow-light font-bold"
+                      : "text-white dark:text-gray-200 hover:text-historic-yellow-light"
+                  }`}
+                >
+                  Leaderboard
+                </Link>
+              </>
+            )}
+          </nav>
 
           {/* Right side - Auth Actions and Mobile Menu Button */}
           <div className="flex items-center gap-4 lg:w-64 justify-end">
-          {/* Desktop Auth Actions - Hidden on mobile/tablet */}
-          <div className="hidden lg:flex items-center">
-            {isAuthenticated && user ? (
-              <UserDropdown userName={user.name} userLevel={user.level} />
-            ) : (
-              <div className="flex items-center gap-4">
-                <Link
-                  to="/login"
-                  className="font-quicksand text-white hover:text-historic-yellow-light transition-colors"
-                >
-                  Masuk
-                </Link>
-                <Link
-                  to="/register"
-                  className="bg-gradient-to-r from-historic-yellow to-historic-orange hover:from-historic-orange hover:to-historic-yellow text-white font-quicksand px-6 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
-                >
-                  Daftar
-                </Link>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-white hover:text-historic-yellow-light transition-colors p-2"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+            {/* Desktop Auth Actions */}
+            <div className="hidden lg:flex items-center">
+              {isAuthenticated && user ? (
+                <UserDropdown userName={user.name} userLevel={user.level} />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <div className="flex items-center gap-4">
+                  <Link
+                    to="/login"
+                    className="font-quicksand text-white dark:text-gray-200 hover:text-historic-yellow-light transition-colors"
+                  >
+                    Masuk
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="bg-gradient-to-r from-historic-yellow to-historic-orange hover:from-historic-orange hover:to-historic-yellow text-white font-quicksand px-6 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+                  >
+                    Daftar
+                  </Link>
+                </div>
               )}
-            </svg>
-          </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden text-white dark:text-gray-200 hover:text-historic-yellow-light transition-colors p-2"
+              aria-label="Toggle menu"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -177,7 +178,7 @@ const Navbar = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Mobile Menu Header */}
-            <div className="p-4 border-b border-historic-brown-dark">
+            <div className="p-4 border-b border-historic-brown-dark dark:border-gray-700">
               <div className="flex items-center justify-between mb-4">
                 <Link to="/" onClick={closeMobileMenu}>
                   <img
@@ -208,7 +209,7 @@ const Navbar = () => {
 
               {/* User Profile Info in Mobile Menu */}
               {isAuthenticated && user && (
-                <div className="flex items-center gap-3 bg-historic-brown-dark rounded-lg p-3">
+                <div className="flex items-center gap-3 bg-historic-brown-dark dark:bg-gray-700 rounded-lg p-3">
                   <div className="w-12 h-12 bg-historic-yellow rounded-full flex items-center justify-center">
                     <span className="font-quicksand font-bold text-historic-brown-dark text-lg">
                       {user.name.charAt(0)}
@@ -234,7 +235,7 @@ const Navbar = () => {
                 className={`block font-quicksand text-lg py-3 px-4 rounded-lg transition-colors ${
                   isActive("/")
                     ? "bg-historic-yellow text-historic-brown-dark font-bold"
-                    : "text-white hover:bg-historic-brown-dark"
+                    : "text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700"
                 }`}
               >
                 🏠 Beranda
@@ -248,7 +249,7 @@ const Navbar = () => {
                     className={`block font-quicksand text-lg py-3 px-4 rounded-lg transition-colors ${
                       isActive("/kuis")
                         ? "bg-historic-yellow text-historic-brown-dark font-bold"
-                        : "text-white hover:bg-historic-brown-dark"
+                        : "text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700"
                     }`}
                   >
                     🎯 Kuis
@@ -259,7 +260,7 @@ const Navbar = () => {
                     className={`block font-quicksand text-lg py-3 px-4 rounded-lg transition-colors ${
                       isActive("/leaderboard")
                         ? "bg-historic-yellow text-historic-brown-dark font-bold"
-                        : "text-white hover:bg-historic-brown-dark"
+                        : "text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700"
                     }`}
                   >
                     🏆 Leaderboard
@@ -270,7 +271,7 @@ const Navbar = () => {
                     className={`block font-quicksand text-lg py-3 px-4 rounded-lg transition-colors ${
                       isActive("/tutorial")
                         ? "bg-historic-yellow text-historic-brown-dark font-bold"
-                        : "text-white hover:bg-historic-brown-dark"
+                        : "text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700"
                     }`}
                   >
                     📖 Tutorial Gameplay
@@ -279,7 +280,7 @@ const Navbar = () => {
                   {/* Mobile Menu Divider */}
                   <div className="border-t border-historic-brown-dark dark:border-gray-700 my-4"></div>
 
-                  {/* Theme Toggle */}
+                  {/* Theme Toggle in Mobile Menu */}
                   <button
                     onClick={() => {
                       toggleTheme();
@@ -287,35 +288,35 @@ const Navbar = () => {
                     }}
                     className="block w-full font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700 transition-colors text-left"
                   >
-                    {theme === "dark" ? "☀️ Mode Terang" : "�� Mode Gelap"}
+                    {theme === "dark" ? "☀️ Mode Terang" : "🌙 Mode Gelap"}
                   </button>
 
                   {/* User Menu Items for Mobile */}
                   <Link
                     to="/profile"
                     onClick={closeMobileMenu}
-                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark transition-colors"
+                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700 transition-colors"
                   >
                     👤 Profil Saya
                   </Link>
                   <Link
                     to="/stats"
                     onClick={closeMobileMenu}
-                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark transition-colors"
+                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700 transition-colors"
                   >
                     📊 Statistik
                   </Link>
                   <Link
                     to="/achievements"
                     onClick={closeMobileMenu}
-                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark transition-colors"
+                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700 transition-colors"
                   >
                     🏆 Achievement
                   </Link>
                   <Link
                     to="/settings"
                     onClick={closeMobileMenu}
-                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark transition-colors"
+                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700 transition-colors"
                   >
                     ⚙️ Pengaturan
                   </Link>
@@ -323,11 +324,11 @@ const Navbar = () => {
                   {/* Admin Menu for Mobile */}
                   {user?.role === "admin" && (
                     <>
-                      <div className="border-t border-historic-brown-dark my-4"></div>
+                      <div className="border-t border-historic-brown-dark dark:border-gray-700 my-4"></div>
                       <Link
                         to="/admin"
                         onClick={closeMobileMenu}
-                        className="block font-quicksand text-lg py-3 px-4 rounded-lg bg-historic-cream text-historic-brown-dark hover:bg-historic-yellow transition-colors font-semibold"
+                        className="block font-quicksand text-lg py-3 px-4 rounded-lg bg-historic-cream dark:bg-gray-600 text-historic-brown-dark dark:text-historic-yellow hover:bg-historic-yellow dark:hover:bg-gray-500 transition-colors font-semibold"
                       >
                         🛠️ Admin Dashboard
                       </Link>
@@ -342,7 +343,7 @@ const Navbar = () => {
                     className={`block font-quicksand text-lg py-3 px-4 rounded-lg transition-colors ${
                       isActive("/tutorial")
                         ? "bg-historic-yellow text-historic-brown-dark font-bold"
-                        : "text-white hover:bg-historic-brown-dark"
+                        : "text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700"
                     }`}
                   >
                     📖 Tutorial Gameplay
@@ -350,18 +351,29 @@ const Navbar = () => {
                   <Link
                     to="/login"
                     onClick={closeMobileMenu}
-                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark transition-colors"
+                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700 transition-colors"
                   >
                     🏆 Leaderboard
                   </Link>
 
                   {/* Mobile Auth Actions */}
-                  <div className="border-t border-historic-brown-dark my-4"></div>
+                  <div className="border-t border-historic-brown-dark dark:border-gray-700 my-4"></div>
+
+                  {/* Theme Toggle in Mobile Menu */}
+                  <button
+                    onClick={() => {
+                      toggleTheme();
+                      closeMobileMenu();
+                    }}
+                    className="block w-full font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700 transition-colors text-left"
+                  >
+                    {theme === "dark" ? "☀️ Mode Terang" : "🌙 Mode Gelap"}
+                  </button>
 
                   <Link
                     to="/login"
                     onClick={closeMobileMenu}
-                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark transition-colors"
+                    className="block font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700 transition-colors"
                   >
                     🚪 Masuk
                   </Link>
