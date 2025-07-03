@@ -13,6 +13,7 @@ interface User {
   level: string;
   points: number;
   avatar?: string;
+  role?: "user" | "admin";
 }
 
 interface AuthContextType {
