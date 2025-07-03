@@ -348,8 +348,7 @@ const Navbar = () => {
                 <button
                   onClick={() => {
                     closeMobileMenu();
-                    // Add logout functionality here
-                    window.location.href = "/";
+                    logout();
                   }}
                   className="w-full font-quicksand text-lg py-3 px-4 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors"
                 >
