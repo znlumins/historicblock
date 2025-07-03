@@ -108,9 +108,12 @@ const Profile = () => {
                 </div>
 
                 <div className="mt-6">
-                  <button className="w-full bg-historic-brown-dark text-white py-3 rounded-lg font-quicksand hover:bg-historic-brown transition-colors">
+                  <Link
+                    to="/settings"
+                    className="block w-full bg-historic-brown-dark text-white py-3 rounded-lg font-quicksand hover:bg-historic-brown transition-colors text-center"
+                  >
                     Edit Profil
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
