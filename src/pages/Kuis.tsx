@@ -255,9 +255,9 @@ const Kuis = () => {
             </div>
 
             {/* Manual Quiz Option */}
-            <div className="bg-white rounded-xl p-8 shadow-lg text-center border-2 border-gray-200 hover:border-historic-yellow transition-colors">
-              <div className="text-6xl mb-4">📚</div>
-              <h2 className="font-quicksand text-2xl font-bold text-historic-brown-dark mb-4">
+            <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg text-center border-2 border-gray-200 hover:border-historic-yellow transition-colors">
+              <div className="text-4xl md:text-6xl mb-4">📚</div>
+              <h2 className="font-quicksand text-xl md:text-2xl font-bold text-historic-brown-dark mb-4">
                 Kuis Manual
               </h2>
               <p className="font-merriweather text-gray-600 mb-6">
