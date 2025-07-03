@@ -6,6 +6,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 const Settings = () => {
   const { user } = useAuth();
+  const { theme, toggleTheme } = useTheme();
 
   // State untuk form data
   const [formData, setFormData] = useState({
