@@ -8,6 +8,7 @@ const Kuis = () => {
   const [showARCamera, setShowARCamera] = useState(false);
   const [detectedCard, setDetectedCard] = useState(null);
   const [showQuizDialog, setShowQuizDialog] = useState(false);
+  const [showManualQuizDialog, setShowManualQuizDialog] = useState(false);
 
   const handleARScan = () => {
     setShowARCamera(true);
