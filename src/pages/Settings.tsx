@@ -1,7 +1,76 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Settings = () => {
+  const { user } = useAuth();
+
+  // State untuk form data
+  const [formData, setFormData] = useState({
+    fullName: user?.name || "Daffa Ahmad Al Attas",
+    email: user?.email || "daffa@historic.com",
+  });
+
+  // State untuk toggle switches
+  const [toggles, setToggles] = useState({
+    showNameInLeaderboard: true,
+    publicProfile: true,
+    soundEffects: true,
+    darkMode: false,
+    dailyQuizNotification: true,
+    leaderboardUpdate: true,
+  });
+
+  // State untuk difficulty level
+  const [difficulty, setDifficulty] = useState("Sedang");
+
+  // State untuk UI feedback
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(null);
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleToggle = (toggleName) => {
+    setToggles({
+      ...toggles,
+      [toggleName]: !toggles[toggleName],
+    });
+  };
+
+  const handleSaveAccount = () => {
+    // Simulate API call
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 3000);
+  };
+
+  const handleChangePassword = () => {
+    // Redirect to change password flow
+    alert("Redirect ke halaman ganti password (akan diimplementasi)");
+  };
+
+  const handleResetProgress = () => {
+    setShowConfirmDialog("reset");
+  };
+
+  const handleDeleteAccount = () => {
+    setShowConfirmDialog("delete");
+  };
+
+  const confirmAction = () => {
+    if (showConfirmDialog === "reset") {
+      alert("Progress berhasil di-reset!");
+    } else if (showConfirmDialog === "delete") {
+      alert("Akun berhasil dihapus!");
+    }
+    setShowConfirmDialog(null);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white border-2 border-[#ced4da] rounded-lg">
       <link
@@ -11,6 +80,45 @@ const Settings = () => {
 
       {/* Header */}
       <Navbar />
+
+      {/* Success Message */}
+      {showSuccess && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce">
+          ✅ Perubahan berhasil disimpan!
+        </div>
+      )}
+
+      {/* Confirmation Dialog */}
+      {showConfirmDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 max-w-md mx-4">
+            <h3 className="font-quicksand text-xl font-bold text-gray-800 mb-4">
+              {showConfirmDialog === "reset"
+                ? "⚠️ Reset Progress?"
+                : "⚠️ Hapus Akun?"}
+            </h3>
+            <p className="font-quicksand text-gray-600 mb-6">
+              {showConfirmDialog === "reset"
+                ? "Semua progress kuis dan achievement akan hilang. Tindakan ini tidak dapat dibatalkan."
+                : "Akun dan semua data Anda akan dihapus permanen. Tindakan ini tidak dapat dibatalkan."}
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowConfirmDialog(null)}
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg font-quicksand hover:bg-gray-50"
+              >
+                Batal
+              </button>
+              <button
+                onClick={confirmAction}
+                className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg font-quicksand hover:bg-red-700"
+              >
+                {showConfirmDialog === "reset" ? "Reset" : "Hapus"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <div className="flex-1 bg-gradient-to-r from-historic-cream-light to-historic-cream py-20 px-20">
@@ -38,9 +146,10 @@ const Settings = () => {
                     </label>
                     <input
                       type="text"
-                      defaultValue="Daffa Ahmad Al Attas"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand"
-                      onChange={() => {}}
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand focus:ring-2 focus:ring-historic-brown focus:border-historic-brown"
                     />
                   </div>
                   <div>
@@ -49,13 +158,17 @@ const Settings = () => {
                     </label>
                     <input
                       type="email"
-                      defaultValue="daffa.ahmad@example.com"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand"
-                      onChange={() => {}}
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand focus:ring-2 focus:ring-historic-brown focus:border-historic-brown"
                     />
                   </div>
                 </div>
-                <button className="bg-historic-brown text-white px-6 py-2 rounded-lg font-quicksand hover:bg-historic-brown-dark transition-colors">
+                <button
+                  onClick={handleSaveAccount}
+                  className="bg-historic-brown text-white px-6 py-2 rounded-lg font-quicksand hover:bg-historic-brown-dark transition-colors"
+                >
                   Simpan Perubahan
                 </button>
               </div>
@@ -76,22 +189,26 @@ const Settings = () => {
                       Nama Anda akan terlihat di papan peringkat
                     </div>
                   </div>
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      id="showName"
-                      defaultChecked
-                      className="sr-only"
-                    />
-                    <label
-                      htmlFor="showName"
-                      className="flex items-center cursor-pointer"
+                  <button
+                    onClick={() => handleToggle("showNameInLeaderboard")}
+                    className="relative"
+                  >
+                    <div
+                      className={`w-10 h-6 rounded-full shadow-inner transition-colors ${
+                        toggles.showNameInLeaderboard
+                          ? "bg-historic-brown"
+                          : "bg-gray-300"
+                      }`}
                     >
-                      <div className="w-10 h-6 bg-historic-brown rounded-full shadow-inner">
-                        <div className="w-4 h-4 bg-white rounded-full shadow transform translate-x-5 translate-y-1"></div>
-                      </div>
-                    </label>
-                  </div>
+                      <div
+                        className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform translate-y-1 ${
+                          toggles.showNameInLeaderboard
+                            ? "translate-x-5"
+                            : "translate-x-1"
+                        }`}
+                      ></div>
+                    </div>
+                  </button>
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
@@ -102,24 +219,31 @@ const Settings = () => {
                       Pemain lain dapat melihat statistik Anda
                     </div>
                   </div>
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      id="publicProfile"
-                      defaultChecked
-                      className="sr-only"
-                    />
-                    <label
-                      htmlFor="publicProfile"
-                      className="flex items-center cursor-pointer"
+                  <button
+                    onClick={() => handleToggle("publicProfile")}
+                    className="relative"
+                  >
+                    <div
+                      className={`w-10 h-6 rounded-full shadow-inner transition-colors ${
+                        toggles.publicProfile
+                          ? "bg-historic-brown"
+                          : "bg-gray-300"
+                      }`}
                     >
-                      <div className="w-10 h-6 bg-historic-brown rounded-full shadow-inner">
-                        <div className="w-4 h-4 bg-white rounded-full shadow transform translate-x-5 translate-y-1"></div>
-                      </div>
-                    </label>
-                  </div>
+                      <div
+                        className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform translate-y-1 ${
+                          toggles.publicProfile
+                            ? "translate-x-5"
+                            : "translate-x-1"
+                        }`}
+                      ></div>
+                    </div>
+                  </button>
                 </div>
-                <button className="bg-red-600 text-white px-6 py-2 rounded-lg font-quicksand hover:bg-red-700 transition-colors">
+                <button
+                  onClick={handleChangePassword}
+                  className="bg-red-600 text-white px-6 py-2 rounded-lg font-quicksand hover:bg-red-700 transition-colors"
+                >
                   Ganti Password
                 </button>
               </div>
@@ -140,22 +264,26 @@ const Settings = () => {
                       Putar suara saat menjawab quiz
                     </div>
                   </div>
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      id="soundEffects"
-                      defaultChecked
-                      className="sr-only"
-                    />
-                    <label
-                      htmlFor="soundEffects"
-                      className="flex items-center cursor-pointer"
+                  <button
+                    onClick={() => handleToggle("soundEffects")}
+                    className="relative"
+                  >
+                    <div
+                      className={`w-10 h-6 rounded-full shadow-inner transition-colors ${
+                        toggles.soundEffects
+                          ? "bg-historic-brown"
+                          : "bg-gray-300"
+                      }`}
                     >
-                      <div className="w-10 h-6 bg-historic-brown rounded-full shadow-inner">
-                        <div className="w-4 h-4 bg-white rounded-full shadow transform translate-x-5 translate-y-1"></div>
-                      </div>
-                    </label>
-                  </div>
+                      <div
+                        className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform translate-y-1 ${
+                          toggles.soundEffects
+                            ? "translate-x-5"
+                            : "translate-x-1"
+                        }`}
+                      ></div>
+                    </div>
+                  </button>
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
@@ -166,26 +294,31 @@ const Settings = () => {
                       Gunakan tema gelap untuk mata yang lebih nyaman
                     </div>
                   </div>
-                  <div className="relative">
-                    <input type="checkbox" id="darkMode" className="sr-only" />
-                    <label
-                      htmlFor="darkMode"
-                      className="flex items-center cursor-pointer"
+                  <button
+                    onClick={() => handleToggle("darkMode")}
+                    className="relative"
+                  >
+                    <div
+                      className={`w-10 h-6 rounded-full shadow-inner transition-colors ${
+                        toggles.darkMode ? "bg-historic-brown" : "bg-gray-300"
+                      }`}
                     >
-                      <div className="w-10 h-6 bg-gray-300 rounded-full shadow-inner">
-                        <div className="w-4 h-4 bg-white rounded-full shadow transform translate-x-1 translate-y-1"></div>
-                      </div>
-                    </label>
-                  </div>
+                      <div
+                        className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform translate-y-1 ${
+                          toggles.darkMode ? "translate-x-5" : "translate-x-1"
+                        }`}
+                      ></div>
+                    </div>
+                  </button>
                 </div>
                 <div>
                   <label className="block font-quicksand font-semibold text-gray-700 mb-2">
                     Tingkat kesulitan default
                   </label>
                   <select
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand"
-                    defaultValue="Sedang"
-                    onChange={() => {}}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg font-quicksand focus:ring-2 focus:ring-historic-brown focus:border-historic-brown"
+                    value={difficulty}
+                    onChange={(e) => setDifficulty(e.target.value)}
                   >
                     <option value="Mudah">Mudah</option>
                     <option value="Sedang">Sedang</option>
@@ -211,22 +344,26 @@ const Settings = () => {
                       Pengingat untuk mengerjakan quiz setiap hari
                     </div>
                   </div>
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      id="dailyQuiz"
-                      defaultChecked
-                      className="sr-only"
-                    />
-                    <label
-                      htmlFor="dailyQuiz"
-                      className="flex items-center cursor-pointer"
+                  <button
+                    onClick={() => handleToggle("dailyQuizNotification")}
+                    className="relative"
+                  >
+                    <div
+                      className={`w-10 h-6 rounded-full shadow-inner transition-colors ${
+                        toggles.dailyQuizNotification
+                          ? "bg-historic-brown"
+                          : "bg-gray-300"
+                      }`}
                     >
-                      <div className="w-10 h-6 bg-historic-brown rounded-full shadow-inner">
-                        <div className="w-4 h-4 bg-white rounded-full shadow transform translate-x-5 translate-y-1"></div>
-                      </div>
-                    </label>
-                  </div>
+                      <div
+                        className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform translate-y-1 ${
+                          toggles.dailyQuizNotification
+                            ? "translate-x-5"
+                            : "translate-x-1"
+                        }`}
+                      ></div>
+                    </div>
+                  </button>
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
@@ -237,22 +374,26 @@ const Settings = () => {
                       Pemberitahuan perubahan ranking
                     </div>
                   </div>
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      id="leaderboardUpdate"
-                      defaultChecked
-                      className="sr-only"
-                    />
-                    <label
-                      htmlFor="leaderboardUpdate"
-                      className="flex items-center cursor-pointer"
+                  <button
+                    onClick={() => handleToggle("leaderboardUpdate")}
+                    className="relative"
+                  >
+                    <div
+                      className={`w-10 h-6 rounded-full shadow-inner transition-colors ${
+                        toggles.leaderboardUpdate
+                          ? "bg-historic-brown"
+                          : "bg-gray-300"
+                      }`}
                     >
-                      <div className="w-10 h-6 bg-historic-brown rounded-full shadow-inner">
-                        <div className="w-4 h-4 bg-white rounded-full shadow transform translate-x-5 translate-y-1"></div>
-                      </div>
-                    </label>
-                  </div>
+                      <div
+                        className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform translate-y-1 ${
+                          toggles.leaderboardUpdate
+                            ? "translate-x-5"
+                            : "translate-x-1"
+                        }`}
+                      ></div>
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -267,10 +408,16 @@ const Settings = () => {
                   Tindakan berikut tidak dapat dibatalkan
                 </p>
                 <div className="flex gap-3">
-                  <button className="bg-red-600 text-white px-4 py-2 rounded-lg font-quicksand hover:bg-red-700 transition-colors">
+                  <button
+                    onClick={handleResetProgress}
+                    className="bg-red-600 text-white px-4 py-2 rounded-lg font-quicksand hover:bg-red-700 transition-colors"
+                  >
                     Reset Progress
                   </button>
-                  <button className="bg-red-700 text-white px-4 py-2 rounded-lg font-quicksand hover:bg-red-800 transition-colors">
+                  <button
+                    onClick={handleDeleteAccount}
+                    className="bg-red-700 text-white px-4 py-2 rounded-lg font-quicksand hover:bg-red-800 transition-colors"
+                  >
                     Hapus Akun
                   </button>
                 </div>
