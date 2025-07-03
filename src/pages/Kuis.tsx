@@ -1,7 +1,35 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import ARCamera from "@/components/ARCamera";
 
 const Kuis = () => {
+  const navigate = useNavigate();
+  const [showARCamera, setShowARCamera] = useState(false);
+  const [detectedCard, setDetectedCard] = useState(null);
+  const [showQuizDialog, setShowQuizDialog] = useState(false);
+
+  const handleARScan = () => {
+    setShowARCamera(true);
+  };
+
+  const handleCardDetected = (cardData) => {
+    setDetectedCard(cardData);
+    setShowARCamera(false);
+    setShowQuizDialog(true);
+  };
+
+  const handleStartQuiz = () => {
+    // Simulate navigation to actual quiz
+    setShowQuizDialog(false);
+    alert(`Memulai kuis "${detectedCard.name}"! (Quiz akan diimplementasi)`);
+  };
+
+  const handleManualQuiz = () => {
+    // Show manual quiz selection
+    alert("Pilihan quiz manual akan diimplementasi");
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white border-2 border-[#ced4da] rounded-lg">
       {/* Import Google Fonts */}
@@ -13,21 +41,200 @@ const Kuis = () => {
       {/* Header */}
       <Navbar />
 
+      {/* AR Camera Modal */}
+      {showARCamera && (
+        <ARCamera
+          onCardDetected={handleCardDetected}
+          onClose={() => setShowARCamera(false)}
+        />
+      )}
+
+      {/* Quiz Confirmation Dialog */}
+      {showQuizDialog && detectedCard && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 max-w-lg mx-4">
+            <div className="text-center mb-6">
+              <div className="text-6xl mb-4">🎯</div>
+              <h3 className="font-georgia text-2xl font-bold text-historic-brown-dark mb-2">
+                Kartu Terdeteksi!
+              </h3>
+              <div className="bg-historic-cream rounded-lg p-4 mb-4">
+                <h4 className="font-quicksand text-xl font-bold text-historic-brown">
+                  {detectedCard.name}
+                </h4>
+                <p className="font-quicksand text-gray-600 mt-1">
+                  Era: {detectedCard.era}
+                </p>
+                <p className="font-quicksand text-gray-600">
+                  Tingkat: {detectedCard.difficulty}
+                </p>
+                <p className="font-merriweather text-sm text-gray-700 mt-2">
+                  {detectedCard.description}
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center mb-6">
+              <p className="font-quicksand text-gray-600">
+                Apakah Anda siap memulai kuis berdasarkan kartu ini?
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowQuizDialog(false)}
+                className="flex-1 px-6 py-3 border border-gray-300 rounded-lg font-quicksand hover:bg-gray-50 transition-colors"
+              >
+                Batal
+              </button>
+              <button
+                onClick={handleStartQuiz}
+                className="flex-1 px-6 py-3 bg-historic-brown text-white rounded-lg font-quicksand hover:bg-historic-brown-dark transition-colors flex items-center justify-center gap-2"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 23 23"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.8078 17.5267H21.9075V20.8114H20.8078V17.5267ZM20.8078 2.18857H21.9075V5.48044H20.8078V2.18857ZM17.5231 1.09607H20.8078V2.18857H17.5231V1.09607ZM17.5231 20.8114H20.8078V21.9039H17.5231V20.8114ZM18.6156 4.38435H4.3772V18.6228H18.6156V4.38435ZM14.2384 9.86123H15.3309V13.1459H12.0463V12.0534H14.2384V9.86123ZM9.85407 5.48404H13.1388V6.57654H9.85407V5.48404ZM9.85407 7.66904H13.1388V10.9537H12.0463V8.76872H9.85407V7.66904ZM9.85407 9.86123H10.9538V13.1459H9.85407V9.86123ZM8.76157 17.5303H5.47688V14.2456H8.76157V17.5303ZM8.76157 12.0534H6.56938V13.1459H5.47688V9.86123H6.56938V10.9537H8.76157V12.0534ZM8.76157 9.86123H7.66907V7.66904H8.76157V9.86123ZM8.76157 6.57654H6.56938V8.76872H5.47688V5.48044H8.76157V6.57654ZM13.1388 17.5303H12.0463V16.4306H13.1388V17.5303ZM13.1388 15.3381H10.9538V17.5303H9.85407V14.2456H13.1388V15.3381ZM17.5231 17.5303H14.2384V14.2456H17.5231V17.5303ZM17.5231 13.1459H16.4306V9.86123H17.5231V13.1459ZM17.5231 8.76872H14.2384V5.48044H17.5231V8.76872Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M15.331 15.3345H16.4307V16.427H15.331V15.3345ZM15.331 6.57294H16.4307V7.66544H15.331V6.57294ZM6.5694 15.3345H7.66909V16.427H6.5694V15.3345ZM2.19222 20.8114H5.4769V21.9039H2.19222V20.8114ZM2.19222 1.09607H5.4769V2.18857H2.19222V1.09607ZM1.09253 17.5267H2.19222V20.8114H1.09253V17.5267ZM1.09253 2.18857H2.19222V5.48044H1.09253V2.18857Z"
+                    fill="white"
+                  />
+                </svg>
+                Mulai Kuis
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center bg-gradient-to-r from-historic-cream-light to-historic-cream">
-        <div className="text-center">
-          <h1 className="font-georgia text-4xl text-historic-brown-dark mb-4">
-            Halaman Kuis
-          </h1>
-          <p className="font-merriweather text-lg text-gray-700 mb-6">
-            Halaman kuis sedang dalam pengembangan.
-          </p>
-          <Link
-            to="/"
-            className="inline-block px-6 py-3 bg-historic-brown-dark text-white font-quicksand rounded-lg hover:bg-historic-brown transition-colors"
-          >
-            Kembali ke Beranda
-          </Link>
+      <div className="flex-1 bg-gradient-to-r from-historic-cream-light to-historic-cream py-20 px-20">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="font-georgia text-4xl text-historic-brown-dark mb-4">
+              🎮 Kuis Historic Block
+            </h1>
+            <p className="font-merriweather text-lg text-gray-700 max-w-2xl mx-auto">
+              Mulai petualangan sejarah Anda! Gunakan AR untuk memindai kartu
+              Historic Block atau pilih kuis manual.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* AR Scan Option */}
+            <div className="bg-white rounded-xl p-8 shadow-lg text-center border-2 border-historic-yellow hover:border-historic-orange transition-colors">
+              <div className="text-6xl mb-4">📱</div>
+              <h2 className="font-quicksand text-2xl font-bold text-historic-brown-dark mb-4">
+                AR Scan Kartu
+              </h2>
+              <p className="font-merriweather text-gray-600 mb-6">
+                Gunakan kamera untuk memindai kartu Historic Block dan mulai
+                kuis sesuai kartu yang dipindai.
+              </p>
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="mr-2">✅</span>
+                  <span>Kuis disesuaikan dengan kartu</span>
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="mr-2">✅</span>
+                  <span>Pengalaman AR interaktif</span>
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="mr-2">✅</span>
+                  <span>Tingkat kesulitan otomatis</span>
+                </div>
+              </div>
+              <button
+                onClick={handleARScan}
+                className="w-full bg-historic-brown text-white px-6 py-3 rounded-lg font-quicksand hover:bg-historic-brown-dark transition-colors flex items-center justify-center gap-2"
+              >
+                <span>📷</span>
+                Buka Kamera AR
+              </button>
+            </div>
+
+            {/* Manual Quiz Option */}
+            <div className="bg-white rounded-xl p-8 shadow-lg text-center border-2 border-gray-200 hover:border-historic-yellow transition-colors">
+              <div className="text-6xl mb-4">📚</div>
+              <h2 className="font-quicksand text-2xl font-bold text-historic-brown-dark mb-4">
+                Kuis Manual
+              </h2>
+              <p className="font-merriweather text-gray-600 mb-6">
+                Pilih sendiri topik dan tingkat kesulitan kuis sejarah yang
+                ingin Anda kerjakan.
+              </p>
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="mr-2">✅</span>
+                  <span>Pilih topik sejarah</span>
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="mr-2">✅</span>
+                  <span>Atur tingkat kesulitan</span>
+                </div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="mr-2">✅</span>
+                  <span>Akses semua periode</span>
+                </div>
+              </div>
+              <button
+                onClick={handleManualQuiz}
+                className="w-full bg-gray-600 text-white px-6 py-3 rounded-lg font-quicksand hover:bg-gray-700 transition-colors flex items-center justify-center gap-2"
+              >
+                <span>⚙️</span>
+                Pilih Kuis Manual
+              </button>
+            </div>
+          </div>
+
+          {/* Quick Stats */}
+          <div className="mt-12 bg-white rounded-xl p-6 shadow-lg">
+            <h3 className="font-quicksand text-xl font-bold text-historic-brown-dark mb-4 text-center">
+              📊 Statistik Cepat
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              <div className="bg-historic-cream rounded-lg p-4">
+                <div className="font-quicksand text-2xl font-bold text-historic-brown">
+                  15
+                </div>
+                <div className="font-quicksand text-sm text-gray-600">
+                  Kuis Selesai
+                </div>
+              </div>
+              <div className="bg-historic-cream rounded-lg p-4">
+                <div className="font-quicksand text-2xl font-bold text-historic-brown">
+                  85%
+                </div>
+                <div className="font-quicksand text-sm text-gray-600">
+                  Akurasi
+                </div>
+              </div>
+              <div className="bg-historic-cream rounded-lg p-4">
+                <div className="font-quicksand text-2xl font-bold text-historic-brown">
+                  1,250
+                </div>
+                <div className="font-quicksand text-sm text-gray-600">
+                  Total Poin
+                </div>
+              </div>
+              <div className="bg-historic-cream rounded-lg p-4">
+                <div className="font-quicksand text-2xl font-bold text-historic-brown">
+                  #5
+                </div>
+                <div className="font-quicksand text-sm text-gray-600">
+                  Ranking
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
