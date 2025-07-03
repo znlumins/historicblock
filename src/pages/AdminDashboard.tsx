@@ -148,7 +148,7 @@ const AdminDashboard = () => {
                     {stats.quizCompletions}
                   </p>
                 </div>
-                <div className="text-4xl">✅</div>
+                <div className="text-4xl">���</div>
               </div>
             </div>
 
@@ -270,7 +270,7 @@ const AdminDashboard = () => {
       </div>
 
       {/* Footer */}
-      <footer className="w-full bg-historic-brown border-t-4 border-historic-brown-dark py-9 px-36">
+      <footer className="w-full bg-historic-brown border-t-4 border-historic-brown-dark py-6 md:py-9 px-4 md:px-8 lg:px-36">
         <div className="max-w-6xl mx-auto text-center">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/c339a674deb6423c5cd64cac74684504d5ed5944?placeholderIfAbsent=true"
