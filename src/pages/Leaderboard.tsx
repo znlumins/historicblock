@@ -1,7 +1,140 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 
 const Leaderboard = () => {
+  const [topPlayers, setTopPlayers] = useState([]);
+
+  useEffect(() => {
+    loadLeaderboard();
+  }, []);
+
+  const loadLeaderboard = () => {
+    // Load leaderboard from localStorage
+    let leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+
+    // If no leaderboard exists, create initial mock data
+    if (leaderboard.length === 0) {
+      const initialData = [
+        {
+          id: "1",
+          name: "Daffa Ahmad Al Attas",
+          email: "daffa@historic.com",
+          level: 15,
+          score: 2450,
+          accuracy: 92,
+          quizzesCompleted: 15,
+          totalQuestions: 210,
+          correctAnswers: 193,
+          lastActive: new Date().toISOString(),
+          joinDate: new Date(
+            Date.now() - 30 * 24 * 60 * 60 * 1000,
+          ).toISOString(),
+        },
+        {
+          id: "2",
+          name: "Sarah Wijayanti",
+          email: "sarah@example.com",
+          level: 12,
+          score: 2180,
+          accuracy: 89,
+          quizzesCompleted: 12,
+          totalQuestions: 168,
+          correctAnswers: 149,
+          lastActive: new Date().toISOString(),
+          joinDate: new Date(
+            Date.now() - 25 * 24 * 60 * 60 * 1000,
+          ).toISOString(),
+        },
+        {
+          id: "3",
+          name: "Ahmad Fauzi",
+          email: "ahmad@example.com",
+          level: 11,
+          score: 1950,
+          accuracy: 87,
+          quizzesCompleted: 11,
+          totalQuestions: 154,
+          correctAnswers: 134,
+          lastActive: new Date().toISOString(),
+          joinDate: new Date(
+            Date.now() - 20 * 24 * 60 * 60 * 1000,
+          ).toISOString(),
+        },
+        {
+          id: "4",
+          name: "Rina Putri",
+          email: "rina@example.com",
+          level: 10,
+          score: 1720,
+          accuracy: 85,
+          quizzesCompleted: 10,
+          totalQuestions: 140,
+          correctAnswers: 119,
+          lastActive: new Date().toISOString(),
+          joinDate: new Date(
+            Date.now() - 15 * 24 * 60 * 60 * 1000,
+          ).toISOString(),
+        },
+        {
+          id: "5",
+          name: "Budi Santoso",
+          email: "budi@example.com",
+          level: 9,
+          score: 1580,
+          accuracy: 83,
+          quizzesCompleted: 9,
+          totalQuestions: 126,
+          correctAnswers: 105,
+          lastActive: new Date().toISOString(),
+          joinDate: new Date(
+            Date.now() - 10 * 24 * 60 * 60 * 1000,
+          ).toISOString(),
+        },
+      ];
+      localStorage.setItem("leaderboard", JSON.stringify(initialData));
+      leaderboard = initialData;
+    }
+
+    // Sort by score and format for display
+    const formattedPlayers = leaderboard
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10) // Top 10
+      .map((player, index) => ({
+        rank: index + 1,
+        id: player.id,
+        name: player.name,
+        level: `Level ${player.level} • ${getLevelTitle(player.level)}`,
+        score: player.score,
+        accuracy: player.accuracy || 0,
+        badge: getBadge(index + 1),
+        quizzesCompleted: player.quizzesCompleted || 0,
+      }));
+
+    setTopPlayers(formattedPlayers);
+  };
+
+  const getLevelTitle = (level) => {
+    if (level >= 18) return "Master";
+    if (level >= 15) return "Expert";
+    if (level >= 10) return "Advanced";
+    if (level >= 5) return "Intermediate";
+    return "Beginner";
+  };
+
+  const getBadge = (rank) => {
+    switch (rank) {
+      case 1:
+        return "👑";
+      case 2:
+        return "🥈";
+      case 3:
+        return "🥉";
+      default:
+        return "🏅";
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white border-2 border-[#ced4da] rounded-lg">
       {/* Import Google Fonts */}
@@ -14,148 +147,189 @@ const Leaderboard = () => {
       <Navbar />
 
       {/* Main Content - Leaderboard */}
-      <section className="w-full bg-white py-20 px-20 flex-1">
+      <section className="w-full bg-gradient-to-r from-historic-cream-light to-historic-cream py-20 px-20 flex-1">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="font-quicksand text-5xl text-gray-800 mb-4">
-              Papan Peringkat
+            <h1 className="font-georgia text-5xl text-historic-brown-dark mb-4">
+              🏆 Papan Peringkat
             </h1>
-            <p className="font-quicksand text-xl text-gray-600">
-              Para ahli sejarah terbaik minggu ini
+            <p className="font-merriweather text-xl text-gray-600">
+              Para ahli sejarah terbaik dengan skor tertinggi
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-4">
-            {/* 1st Place - Golden */}
-            <div className="bg-gradient-to-r from-historic-yellow to-historic-orange rounded-2xl p-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                    <svg
-                      width="24"
-                      height="21"
-                      viewBox="0 0 24 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+          <div className="max-w-4xl mx-auto space-y-4">
+            {topPlayers.map((player, index) => (
+              <div
+                key={player.id}
+                className={`rounded-xl p-6 ${
+                  index === 0
+                    ? "bg-gradient-to-r from-historic-yellow to-historic-orange"
+                    : index === 1
+                      ? "bg-gradient-to-r from-gray-300 to-gray-400"
+                      : index === 2
+                        ? "bg-gradient-to-r from-orange-400 to-orange-500"
+                        : "bg-white shadow-lg"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div
+                      className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg ${
+                        index <= 2
+                          ? "bg-white bg-opacity-20 text-white"
+                          : "bg-historic-cream text-historic-brown"
+                      }`}
                     >
-                      <g clipPath="url(#clip0_27_192)">
-                        <path
-                          d="M12.8203 4.64062C13.2656 4.36719 13.5625 3.87109 13.5625 3.3125C13.5625 2.44922 12.8633 1.75 12 1.75C11.1367 1.75 10.4375 2.44922 10.4375 3.3125C10.4375 3.875 10.7344 4.36719 11.1797 4.64062L8.94141 9.11719C8.58594 9.82812 7.66406 10.0312 7.04297 9.53516L3.5625 6.75C3.75781 6.48828 3.875 6.16406 3.875 5.8125C3.875 4.94922 3.17578 4.25 2.3125 4.25C1.44922 4.25 0.75 4.94922 0.75 5.8125C0.75 6.67578 1.44922 7.375 2.3125 7.375C2.32031 7.375 2.33203 7.375 2.33984 7.375L4.125 17.1953C4.33984 18.3828 5.375 19.25 6.58594 19.25H17.4141C18.6211 19.25 19.6562 18.3867 19.875 17.1953L21.6602 7.375C21.668 7.375 21.6797 7.375 21.6875 7.375C22.5508 7.375 23.25 6.67578 23.25 5.8125C23.25 4.94922 22.5508 4.25 21.6875 4.25C20.8242 4.25 20.125 4.94922 20.125 5.8125C20.125 6.16406 20.2422 6.48828 20.4375 6.75L16.957 9.53516C16.3359 10.0312 15.4141 9.82812 15.0586 9.11719L12.8203 4.64062Z"
-                          fill="#FEF08A"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_27_192">
-                          <path
-                            d="M0.75 0.5H23.25V20.5H0.75V0.5Z"
-                            fill="white"
-                          />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="text-white font-quicksand text-lg font-medium">
-                      Daffa Ahmad Al Attas
+                      {index <= 2 ? player.badge : player.rank}
                     </div>
-                    <div className="text-historic-yellow-light font-quicksand text-sm">
-                      Level 15 • Master
+                    <div>
+                      <div
+                        className={`font-quicksand text-lg font-medium ${
+                          index <= 2 ? "text-white" : "text-gray-800"
+                        }`}
+                      >
+                        {player.name}
+                      </div>
+                      <div
+                        className={`font-quicksand text-sm ${
+                          index <= 2
+                            ? index === 0
+                              ? "text-historic-yellow-light"
+                              : "text-white text-opacity-80"
+                            : "text-gray-600"
+                        }`}
+                      >
+                        {player.level}
+                      </div>
+                      <div
+                        className={`font-quicksand text-xs ${
+                          index <= 2
+                            ? index === 0
+                              ? "text-historic-yellow-light"
+                              : "text-white text-opacity-60"
+                            : "text-gray-500"
+                        }`}
+                      >
+                        {player.quizzesCompleted} quiz • {player.accuracy}%
+                        akurasi
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div
+                      className={`font-quicksand text-2xl font-bold ${
+                        index <= 2 ? "text-white" : "text-historic-brown"
+                      }`}
+                    >
+                      {player.score.toLocaleString()}
+                    </div>
+                    <div
+                      className={`font-quicksand text-sm ${
+                        index <= 2
+                          ? index === 0
+                            ? "text-historic-yellow-light"
+                            : "text-white text-opacity-80"
+                          : "text-gray-600"
+                      }`}
+                    >
+                      Poin
                     </div>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-white font-quicksand text-2xl">
-                    2,450
+              </div>
+            ))}
+
+            {topPlayers.length === 0 && (
+              <div className="text-center py-12">
+                <div className="text-6xl mb-4">📊</div>
+                <h3 className="font-quicksand text-xl text-gray-600 mb-2">
+                  Belum ada data leaderboard
+                </h3>
+                <p className="font-quicksand text-gray-500 mb-6">
+                  Mulai kuis untuk muncul di leaderboard!
+                </p>
+                <Link
+                  to="/kuis"
+                  className="inline-block px-6 py-3 bg-historic-brown text-white rounded-lg font-quicksand hover:bg-historic-brown-dark transition-colors"
+                >
+                  Mulai Quiz Pertama
+                </Link>
+              </div>
+            )}
+
+            {/* Stats Summary */}
+            <div className="mt-12 bg-white rounded-xl p-8 shadow-lg">
+              <h3 className="font-quicksand text-xl font-bold text-historic-brown-dark mb-6 text-center">
+                📈 Statistik Leaderboard
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="text-center">
+                  <div className="font-quicksand text-2xl font-bold text-historic-brown">
+                    {topPlayers.length}
                   </div>
-                  <div className="text-historic-yellow-light font-quicksand text-sm">
-                    Poin
+                  <div className="font-quicksand text-sm text-gray-600">
+                    Total Peserta
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="font-quicksand text-2xl font-bold text-historic-brown">
+                    {topPlayers.length > 0
+                      ? Math.round(
+                          topPlayers.reduce(
+                            (sum, p) => sum + p.quizzesCompleted,
+                            0,
+                          ) / topPlayers.length,
+                        )
+                      : 0}
+                  </div>
+                  <div className="font-quicksand text-sm text-gray-600">
+                    Rata-rata Quiz
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="font-quicksand text-2xl font-bold text-historic-brown">
+                    {topPlayers.length > 0
+                      ? Math.round(
+                          topPlayers.reduce((sum, p) => sum + p.accuracy, 0) /
+                            topPlayers.length,
+                        )
+                      : 0}
+                    %
+                  </div>
+                  <div className="font-quicksand text-sm text-gray-600">
+                    Rata-rata Akurasi
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="font-quicksand text-2xl font-bold text-historic-brown">
+                    {topPlayers.length > 0
+                      ? topPlayers[0]?.score.toLocaleString()
+                      : 0}
+                  </div>
+                  <div className="font-quicksand text-sm text-gray-600">
+                    Skor Tertinggi
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 2nd Place */}
-            <div className="bg-gray-50 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                    <span className="text-gray-600 font-quicksand">2</span>
-                  </div>
-                  <div>
-                    <div className="text-black font-quicksand">
-                      Dhini Felisyha
-                    </div>
-                    <div className="text-gray-600 font-quicksand text-sm">
-                      Level 12
-                    </div>
-                  </div>
-                </div>
-                <div className="text-gray-800 font-quicksand">2,180</div>
-              </div>
-            </div>
-
-            {/* 3rd Place */}
-            <div className="bg-gray-50 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                    <span className="text-gray-600 font-quicksand">3</span>
-                  </div>
-                  <div>
-                    <div className="text-black font-quicksand">Anonymous</div>
-                    <div className="text-gray-600 font-quicksand text-sm">
-                      Level 11
-                    </div>
-                  </div>
-                </div>
-                <div className="text-gray-800 font-quicksand">1,950</div>
-              </div>
-            </div>
-
-            {/* 4th Place */}
-            <div className="bg-gray-50 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                    <span className="text-gray-600 font-quicksand">4</span>
-                  </div>
-                  <div>
-                    <div className="text-black font-quicksand">
-                      Siti Nurhaliza
-                    </div>
-                    <div className="text-gray-600 font-quicksand text-sm">
-                      Level 10
-                    </div>
-                  </div>
-                </div>
-                <div className="text-gray-800 font-quicksand">1,820</div>
-              </div>
-            </div>
-
-            {/* 5th Place */}
-            <div className="bg-gray-50 rounded-xl p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                    <span className="text-gray-600 font-quicksand">5</span>
-                  </div>
-                  <div>
-                    <div className="text-black font-quicksand">
-                      Budi Santoso
-                    </div>
-                    <div className="text-gray-600 font-quicksand text-sm">
-                      Level 9
-                    </div>
-                  </div>
-                </div>
-                <div className="text-gray-800 font-quicksand">1,650</div>
-              </div>
-            </div>
-
-            {/* More players indicator */}
-            <div className="text-center py-4">
-              <button className="text-historic-brown hover:text-historic-brown-dark font-quicksand">
-                Lihat Lebih Banyak →
+            {/* Call to Action */}
+            <div className="text-center py-8">
+              <p className="font-quicksand text-gray-600 mb-4">
+                Ingin masuk ke leaderboard? Mulai quiz sekarang!
+              </p>
+              <Link
+                to="/kuis"
+                className="inline-block px-8 py-3 bg-historic-brown text-white rounded-lg font-quicksand hover:bg-historic-brown-dark transition-colors mr-4"
+              >
+                🎯 Mulai Quiz
+              </Link>
+              <button
+                onClick={loadLeaderboard}
+                className="inline-block px-8 py-3 border border-historic-brown text-historic-brown rounded-lg font-quicksand hover:bg-historic-cream transition-colors"
+              >
+                🔄 Refresh
               </button>
             </div>
           </div>
