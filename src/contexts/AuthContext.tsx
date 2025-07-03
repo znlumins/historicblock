@@ -72,6 +72,22 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         level: "Level 15 • Master",
         points: 2450,
         avatar: null,
+        role: "user" as const,
+      };
+
+      setUser(userData);
+      localStorage.setItem("historic_block_user", JSON.stringify(userData));
+      setLoading(false);
+      return true;
+    } else if (email === "admin@historic.com" && password === "admin123") {
+      const userData = {
+        id: "admin",
+        name: "Admin Historic Block",
+        email: "admin@historic.com",
+        level: "Administrator",
+        points: 9999,
+        avatar: null,
+        role: "admin" as const,
       };
 
       setUser(userData);
@@ -86,6 +102,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         level: "Level 5 • Beginner",
         points: 450,
         avatar: null,
+        role: "user" as const,
       };
 
       setUser(userData);
