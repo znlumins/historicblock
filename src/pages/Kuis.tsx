@@ -220,7 +220,7 @@ const Kuis = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* AR Scan Option */}
             <div className="bg-white rounded-xl p-8 shadow-lg text-center border-2 border-historic-yellow hover:border-historic-orange transition-colors">
               <div className="text-6xl mb-4">📱</div>
