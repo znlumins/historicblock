@@ -135,7 +135,7 @@ const Settings = () => {
 
           <div className="space-y-6">
             {/* Account Settings */}
-            <div className="bg-white rounded-xl p-6 shadow-lg">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border dark:border-gray-700">
               <h2 className="font-quicksand text-xl font-bold text-gray-800 mb-4">
                 👤 Pengaturan Akun
               </h2>
