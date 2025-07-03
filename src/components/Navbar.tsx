@@ -20,25 +20,26 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="w-full h-16 md:h-20 lg:h-[110px] bg-historic-brown dark:bg-gray-800 border-b-2 md:border-b-4 border-historic-brown-dark dark:border-gray-700 shadow-lg flex items-center px-4 md:px-8 lg:px-20 relative">
+      <header className="w-full h-16 md:h-20 lg:h-[110px] bg-historic-brown dark:bg-gray-800 border-b-2 md:border-b-4 border-historic-brown-dark dark:border-gray-700 shadow-lg px-4 md:px-8 lg:px-20 relative">
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Merriweather:wght@400;700&family=Georgia:wght@400&display=swap"
         />
 
-        {/* Left side - Logo */}
-        <div className="flex items-center">
-          <Link to="/" onClick={closeMobileMenu}>
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/507170e63ed72fa0abf94c821deabb0a1109b706?placeholderIfAbsent=true"
-              alt="HISTORIC BLOCK"
-              className="w-[50px] h-[50px] md:w-[62px] md:h-[62px] hover:scale-105 transition-transform"
-            />
-          </Link>
-        </div>
+        <div className="flex items-center justify-between w-full h-full">
+          {/* Left side - Logo */}
+          <div className="flex items-center lg:w-64">
+            <Link to="/" onClick={closeMobileMenu}>
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/507170e63ed72fa0abf94c821deabb0a1109b706?placeholderIfAbsent=true"
+                alt="HISTORIC BLOCK"
+                className="w-[50px] h-[50px] md:w-[62px] md:h-[62px] hover:scale-105 transition-transform"
+              />
+            </Link>
+          </div>
 
-        {/* Desktop Navigation - Hidden on mobile/tablet */}
-        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+          {/* Desktop Navigation - Hidden on mobile/tablet */}
+          <nav className="hidden lg:flex items-center gap-8 justify-center flex-1">
           <Link
             to="/"
             className={`font-quicksand text-base transition-colors ${
