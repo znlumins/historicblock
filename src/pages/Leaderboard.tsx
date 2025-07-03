@@ -199,7 +199,7 @@ const Leaderboard = () => {
                             ? index === 0
                               ? "text-historic-yellow-light"
                               : "text-white text-opacity-80"
-                            : "text-gray-600"
+                            : "text-gray-600 dark:text-gray-300"
                         }`}
                       >
                         {player.level}
@@ -210,7 +210,7 @@ const Leaderboard = () => {
                             ? index === 0
                               ? "text-historic-yellow-light"
                               : "text-white text-opacity-60"
-                            : "text-gray-500"
+                            : "text-gray-500 dark:text-gray-400"
                         }`}
                       >
                         {player.quizzesCompleted} quiz • {player.accuracy}%
@@ -221,7 +221,9 @@ const Leaderboard = () => {
                   <div className="text-right">
                     <div
                       className={`font-quicksand text-2xl font-bold ${
-                        index <= 2 ? "text-white" : "text-historic-brown"
+                        index <= 2
+                          ? "text-white"
+                          : "text-historic-brown dark:text-historic-yellow"
                       }`}
                     >
                       {player.score.toLocaleString()}
@@ -232,7 +234,7 @@ const Leaderboard = () => {
                           ? index === 0
                             ? "text-historic-yellow-light"
                             : "text-white text-opacity-80"
-                          : "text-gray-600"
+                          : "text-gray-600 dark:text-gray-300"
                       }`}
                     >
                       Poin
