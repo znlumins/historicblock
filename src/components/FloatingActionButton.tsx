@@ -5,7 +5,6 @@ import { useAuth } from "@/contexts/AuthContext";
 const FloatingActionButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated } = useAuth();
-  const { theme, toggleTheme } = useTheme();
 
   const quickActions = [
     {
