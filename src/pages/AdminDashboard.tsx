@@ -31,7 +31,7 @@ const AdminDashboard = () => {
     const avgScore = quizResults.length
       ? Math.round(
           quizResults.reduce(
-            (sum: number, result: any) => sum + result.score,
+            (sum: number, result: { score: number }) => sum + result.score,
             0,
           ) / quizResults.length,
         )
@@ -40,20 +40,30 @@ const AdminDashboard = () => {
     // Recent activity
     const recentActivity = quizResults
       .sort(
-        (a: any, b: any) =>
+        (a: { completedAt: string }, b: { completedAt: string }) =>
           new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime(),
       )
       .slice(0, 5)
-      .map((result: any) => {
-        const user = leaderboard.find((u: any) => u.id === result.userId);
-        return {
-          id: result.id,
-          userName: user?.name || "Unknown User",
-          quiz: result.quizId.replace("quiz-", "").replace("-", " "),
-          score: result.score,
-          completedAt: result.completedAt,
-        };
-      });
+      .map(
+        (result: {
+          id: string;
+          userId: string;
+          quizId: string;
+          score: number;
+          completedAt: string;
+        }) => {
+          const user = leaderboard.find(
+            (u: { id: string }) => u.id === result.userId,
+          );
+          return {
+            id: result.id,
+            userName: user?.name || "Unknown User",
+            quiz: result.quizId.replace("quiz-", "").replace("-", " "),
+            score: result.score,
+            completedAt: result.completedAt,
+          };
+        },
+      );
 
     setStats({
       totalUsers,
@@ -148,7 +158,7 @@ const AdminDashboard = () => {
                     {stats.quizCompletions}
                   </p>
                 </div>
-                <div className="text-4xl">���</div>
+                <div className="text-4xl">✅</div>
               </div>
             </div>
 
