@@ -107,7 +107,7 @@ const Index = () => {
             ) : (
               <Link
                 to="/register"
-                className="inline-flex items-center gap-2 px-14 py-5 bg-historic-brown-dark border-2 border-historic-brown rounded-lg shadow-lg hover:bg-historic-brown transition-colors"
+                className="inline-flex items-center gap-2 px-6 md:px-10 lg:px-14 py-3 md:py-4 lg:py-5 bg-historic-brown-dark border-2 border-historic-brown rounded-lg shadow-lg hover:bg-historic-brown transition-colors"
               >
                 <svg
                   width="23"
