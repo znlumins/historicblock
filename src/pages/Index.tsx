@@ -17,7 +17,7 @@ const Index = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="w-full h-[578px] bg-gradient-to-r from-historic-cream-light to-historic-cream relative overflow-hidden">
+      <section className="w-full h-[578px] bg-gradient-to-r from-historic-cream-light to-historic-cream dark:from-gray-800 dark:to-gray-700 relative overflow-hidden">
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 opacity-20">
           {/* Indonesian Map Silhouettes */}
