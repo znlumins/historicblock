@@ -305,7 +305,18 @@ const Navbar = () => {
                   </Link>
 
                   {/* Mobile Menu Divider */}
-                  <div className="border-t border-historic-brown-dark my-4"></div>
+                  <div className="border-t border-historic-brown-dark dark:border-gray-700 my-4"></div>
+
+                  {/* Theme Toggle */}
+                  <button
+                    onClick={() => {
+                      toggleTheme();
+                      closeMobileMenu();
+                    }}
+                    className="block w-full font-quicksand text-lg py-3 px-4 rounded-lg text-white hover:bg-historic-brown-dark dark:hover:bg-gray-700 transition-colors text-left"
+                  >
+                    {theme === "dark" ? "☀️ Mode Terang" : "🌙 Mode Gelap"}
+                  </button>
 
                   {/* User Menu Items for Mobile */}
                   <Link
