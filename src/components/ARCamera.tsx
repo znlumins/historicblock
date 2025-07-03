@@ -46,11 +46,16 @@ const ARCamera = ({ onCardDetected, onClose }: ARCameraProps) => {
 
   const startCamera = async () => {
     try {
+      // Check if getUserMedia is supported
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error("Camera not supported in this browser");
+      }
+
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
-          facingMode: "environment", // Use back camera for AR
-          width: { ideal: 1280 },
-          height: { ideal: 720 },
+          facingMode: { ideal: "environment" }, // Prefer back camera, but allow front
+          width: { ideal: 1280, min: 640 },
+          height: { ideal: 720, min: 480 },
         },
       });
 
@@ -67,6 +72,18 @@ const ARCamera = ({ onCardDetected, onClose }: ARCameraProps) => {
     } catch (error) {
       console.error("Error accessing camera:", error);
       setHasPermission(false);
+
+      // More specific error handling
+      if (error.name === "NotAllowedError") {
+        // User denied permission
+        console.log("Camera permission denied by user");
+      } else if (error.name === "NotFoundError") {
+        // No camera found
+        console.log("No camera device found");
+      } else if (error.name === "NotSupportedError") {
+        // Camera not supported
+        console.log("Camera not supported in this browser");
+      }
     }
   };
 
