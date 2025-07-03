@@ -92,8 +92,8 @@ const Settings = () => {
       {/* Confirmation Dialog */}
       {showConfirmDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 max-w-md mx-4">
-            <h3 className="font-quicksand text-xl font-bold text-gray-800 mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 max-w-md mx-4">
+            <h3 className="font-quicksand text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
               {showConfirmDialog === "reset"
                 ? "⚠️ Reset Progress?"
                 : "⚠️ Hapus Akun?"}
