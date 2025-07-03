@@ -78,7 +78,7 @@ const Index = () => {
               </span>
             </h1>
 
-            <p className="font-merriweather text-sm md:text-base lg:text-[16.766px] leading-relaxed text-[#2c1810] dark:text-gray-300 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
+            <p className="font-merriweather text-sm md:text-base lg:text-[16.766px] leading-relaxed text-[#2c1810] dark:text-gray-200 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
               Uji pengetahuan sejarah Anda melalui kuis interaktif yang
               terhubung dengan board game Historic Block. Jelajahi peristiwa
               bersejarah dan asah kemampuan Anda!
