@@ -201,7 +201,7 @@ const Navbar = () => {
           onClick={closeMobileMenu}
         >
           <div
-            className="bg-historic-brown w-full max-w-sm h-full shadow-lg overflow-y-auto transform transition-transform duration-300 ease-in-out"
+            className="bg-historic-brown dark:bg-gray-800 w-full max-w-sm h-full shadow-lg overflow-y-auto transform transition-transform duration-300 ease-in-out"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Mobile Menu Header */}
