@@ -149,7 +149,7 @@ const Index = () => {
             className="w-[62px] h-[62px] mx-auto mb-4"
           />
 
-          <p className="font-merriweather text-historic-cream-light mb-6">
+          <p className="font-merriweather text-historic-cream-light dark:text-gray-300 mb-6">
             Belajar sejarah dengan cara yang menyenangkan
           </p>
 
