@@ -27,6 +27,8 @@ import QuizResults from "./pages/QuizResults";
 
 // Admin pages
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminQuizzes from "./pages/AdminQuizzes";
+import AdminUsers from "./pages/AdminUsers";
 
 const queryClient = new QueryClient();
 
