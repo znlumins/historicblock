@@ -14,12 +14,12 @@ const Tutorial = () => {
       <Navbar />
 
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center bg-gradient-to-r from-historic-cream-light to-historic-cream">
-        <div className="text-center">
-          <h1 className="font-georgia text-4xl text-historic-brown-dark mb-4">
+      <div className="flex-1 flex items-center justify-center bg-gradient-to-r from-historic-cream-light to-historic-cream px-4 md:px-8">
+        <div className="text-center max-w-2xl">
+          <h1 className="font-georgia text-2xl md:text-3xl lg:text-4xl text-historic-brown-dark mb-4">
             Tutorial Gameplay
           </h1>
-          <p className="font-merriweather text-lg text-gray-700 mb-6">
+          <p className="font-merriweather text-base md:text-lg text-gray-700 mb-6">
             Halaman tutorial sedang dalam pengembangan.
           </p>
           <Link
