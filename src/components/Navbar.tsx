@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="w-full h-[110px] bg-historic-brown border-b-4 border-historic-brown-dark shadow-lg flex items-center px-4 md:px-8 lg:px-20 relative">
+      <header className="w-full h-16 md:h-20 lg:h-[110px] bg-historic-brown border-b-2 md:border-b-4 border-historic-brown-dark shadow-lg flex items-center px-4 md:px-8 lg:px-20 relative">
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Merriweather:wght@400;700&family=Georgia:wght@400&display=swap"
