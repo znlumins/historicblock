@@ -230,6 +230,9 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Floating Action Button */}
+      <FloatingActionButton />
     </div>
   );
 };
