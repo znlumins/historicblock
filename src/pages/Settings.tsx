@@ -295,18 +295,15 @@ const Settings = () => {
                       Gunakan tema gelap untuk mata yang lebih nyaman
                     </div>
                   </div>
-                  <button
-                    onClick={() => handleToggle("darkMode")}
-                    className="relative"
-                  >
+                  <button onClick={toggleTheme} className="relative">
                     <div
                       className={`w-10 h-6 rounded-full shadow-inner transition-colors ${
-                        toggles.darkMode ? "bg-historic-brown" : "bg-gray-300"
+                        theme === "dark" ? "bg-historic-brown" : "bg-gray-300"
                       }`}
                     >
                       <div
                         className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform translate-y-1 ${
-                          toggles.darkMode ? "translate-x-5" : "translate-x-1"
+                          theme === "dark" ? "translate-x-5" : "translate-x-1"
                         }`}
                       ></div>
                     </div>
