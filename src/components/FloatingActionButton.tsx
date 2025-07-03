@@ -46,22 +46,6 @@ const FloatingActionButton = () => {
       {/* Quick Actions */}
       {isOpen && (
         <div className="flex flex-col gap-3 mb-4 animate-in slide-in-from-bottom-2 duration-200">
-          {/* Theme Toggle */}
-          <button
-            onClick={() => {
-              toggleTheme();
-              setIsOpen(false);
-            }}
-            className="w-12 h-12 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group"
-            title={
-              theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"
-            }
-          >
-            <span className="text-lg group-hover:scale-110 transition-transform">
-              {theme === "dark" ? "☀️" : "🌙"}
-            </span>
-          </button>
-
           {/* Quick Action Buttons */}
           {visibleActions.map((action, index) => (
             <Link
