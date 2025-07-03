@@ -136,7 +136,7 @@ const Leaderboard = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white border-2 border-[#ced4da] rounded-lg">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 border-2 border-[#ced4da] dark:border-gray-700 rounded-lg transition-colors">
       {/* Import Google Fonts */}
       <link
         rel="stylesheet"
