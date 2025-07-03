@@ -13,6 +13,12 @@ const AdminQuizzes = () => {
   const [editingQuestion, setEditingQuestion] = useState<QuizQuestion | null>(
     null,
   );
+  const [newQuiz, setNewQuiz] = useState({
+    title: "",
+    description: "",
+    era: "Kemerdekaan",
+    difficulty: "Mudah" as "Mudah" | "Sedang" | "Sulit" | "Expert",
+  });
 
   useEffect(() => {
     setQuizzes(quizDatabase);
