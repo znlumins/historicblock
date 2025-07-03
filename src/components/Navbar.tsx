@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import UserDropdown from "./UserDropdown";
 
 const Navbar = () => {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, logout } = useAuth();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
