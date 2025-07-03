@@ -21,6 +21,13 @@ import Stats from "./pages/Stats";
 import Achievements from "./pages/Achievements";
 import Settings from "./pages/Settings";
 
+// Quiz pages
+import QuizInterface from "./pages/QuizInterface";
+import QuizResults from "./pages/QuizResults";
+
+// Admin pages
+import AdminDashboard from "./pages/AdminDashboard";
+
 const queryClient = new QueryClient();
 
 const App = () => (
