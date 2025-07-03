@@ -312,7 +312,7 @@ const QuizInterface = () => {
       </div>
 
       {/* Quiz Content */}
-      <div className="flex-1 bg-gradient-to-r from-historic-cream-light to-historic-cream py-8 px-6">
+      <div className="flex-1 bg-gradient-to-r from-historic-cream-light to-historic-cream py-4 md:py-8 px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-xl p-8 shadow-lg">
             <div className="mb-6">
@@ -385,7 +385,7 @@ const QuizInterface = () => {
                   disabled={selectedAnswers[currentQuestion.id] === undefined}
                   className="px-6 py-2 bg-historic-brown text-white rounded-lg font-quicksand hover:bg-historic-brown-dark disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Selanjutnya →
+                  Selanjutnya ��
                 </button>
               )}
             </div>
