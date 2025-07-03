@@ -158,11 +158,14 @@ const Login = () => {
           {/* Demo Accounts */}
           <div className="mt-6 p-4 bg-gray-50 rounded-lg">
             <p className="text-sm font-quicksand text-gray-600 mb-2">
-              Demo Account:
+              Demo Accounts:
             </p>
             <div className="text-xs font-quicksand text-gray-500 space-y-1">
-              <div>📧 daffa@historic.com | 🔑 password123</div>
-              <div>📧 user@test.com | 🔑 test123</div>
+              <div>📧 daffa@historic.com | 🔑 password123 (Level 15)</div>
+              <div>📧 adenia@historic.com | 🔑 adenia123 (Level 11)</div>
+              <div>📧 aymarda@historic.com | 🔑 aymarda123 (Level 12)</div>
+              <div>📧 admin@historic.com | 🔑 admin123 (Admin)</div>
+              <div>📧 user@test.com | 🔑 test123 (Level 5)</div>
             </div>
           </div>
 
