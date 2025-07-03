@@ -100,7 +100,7 @@ const Index = () => {
                     fill="white"
                   />
                 </svg>
-                <span className="font-merriweather font-bold text-[15.926px] text-historic-cream">
+                <span className="font-merriweather font-bold text-sm md:text-base lg:text-[15.926px] text-historic-cream">
                   Mulai Kuis
                 </span>
               </Link>
