@@ -20,14 +20,20 @@ const Kuis = () => {
   };
 
   const handleStartQuiz = () => {
-    // Simulate navigation to actual quiz
+    // Navigate to actual quiz interface
     setShowQuizDialog(false);
-    alert(`Memulai kuis "${detectedCard.name}"! (Quiz akan diimplementasi)`);
+    const quizId = detectedCard.id.replace("hc", "quiz-");
+    const quizMap = {
+      "quiz-001": "quiz-proklamasi",
+      "quiz-002": "quiz-majapahit",
+      "quiz-003": "quiz-diponegoro",
+    };
+    navigate(`/quiz/${quizMap[quizId] || "quiz-proklamasi"}`);
   };
 
   const handleManualQuiz = () => {
-    // Show manual quiz selection
-    alert("Pilihan quiz manual akan diimplementasi");
+    // Show manual quiz selection options
+    setShowManualQuizDialog(true);
   };
 
   return (
