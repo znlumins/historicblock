@@ -131,6 +131,23 @@ const UserDropdown = ({ userName, userLevel }: UserDropdownProps) => {
             </Link>
           ))}
 
+          {/* Admin Menu (only for admin users) */}
+          {user?.role === "admin" && (
+            <>
+              <div className="border-t border-gray-100 my-2"></div>
+              <Link
+                to="/admin"
+                className="flex items-center gap-3 px-4 py-3 hover:bg-historic-cream transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="text-lg">🛠️</span>
+                <span className="font-quicksand text-historic-brown font-semibold">
+                  Admin Dashboard
+                </span>
+              </Link>
+            </>
+          )}
+
           {/* Separator */}
           <div className="border-t border-gray-100 my-2"></div>
 
