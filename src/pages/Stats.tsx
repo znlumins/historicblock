@@ -25,7 +25,7 @@ const Stats = () => {
           </div>
 
           {/* Overview Cards */}
-          <div className="grid md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
             <div className="bg-white rounded-xl p-6 shadow-lg text-center">
               <div className="text-3xl mb-2">🏆</div>
               <div className="font-quicksand text-2xl font-bold text-historic-brown-dark">
