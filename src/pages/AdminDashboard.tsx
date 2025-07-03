@@ -238,34 +238,44 @@ const AdminDashboard = () => {
             </h3>
             {stats.recentActivity.length > 0 ? (
               <div className="space-y-4">
-                {stats.recentActivity.map((activity: any) => (
-                  <div
-                    key={activity.id}
-                    className="flex items-center justify-between p-4 bg-historic-cream rounded-lg"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-historic-brown rounded-full flex items-center justify-center text-white font-quicksand font-bold">
-                        {activity.userName.charAt(0)}
+                {stats.recentActivity.map(
+                  (activity: {
+                    id: string;
+                    userName: string;
+                    quiz: string;
+                    score: number;
+                    completedAt: string;
+                  }) => (
+                    <div
+                      key={activity.id}
+                      className="flex items-center justify-between p-4 bg-historic-cream rounded-lg"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 bg-historic-brown rounded-full flex items-center justify-center text-white font-quicksand font-bold">
+                          {activity.userName.charAt(0)}
+                        </div>
+                        <div>
+                          <p className="font-quicksand font-semibold text-gray-800">
+                            {activity.userName}
+                          </p>
+                          <p className="font-quicksand text-sm text-gray-600">
+                            Menyelesaikan quiz "{activity.quiz}"
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-quicksand font-semibold text-gray-800">
-                          {activity.userName}
+                      <div className="text-right">
+                        <p className="font-quicksand font-bold text-historic-brown">
+                          {activity.score} poin
                         </p>
-                        <p className="font-quicksand text-sm text-gray-600">
-                          Menyelesaikan quiz "{activity.quiz}"
+                        <p className="font-quicksand text-xs text-gray-500">
+                          {new Date(activity.completedAt).toLocaleString(
+                            "id-ID",
+                          )}
                         </p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="font-quicksand font-bold text-historic-brown">
-                        {activity.score} poin
-                      </p>
-                      <p className="font-quicksand text-xs text-gray-500">
-                        {new Date(activity.completedAt).toLocaleString("id-ID")}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  ),
+                )}
               </div>
             ) : (
               <div className="text-center py-8">
