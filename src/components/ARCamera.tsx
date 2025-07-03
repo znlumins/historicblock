@@ -123,24 +123,40 @@ const ARCamera = ({ onCardDetected, onClose }: ARCameraProps) => {
         <div className="bg-white rounded-xl p-8 max-w-md mx-4 text-center">
           <div className="text-6xl mb-4">📷</div>
           <h3 className="font-quicksand text-xl font-bold text-gray-800 mb-4">
-            Akses Kamera Diperlukan
+            Tidak Dapat Mengakses Kamera
           </h3>
           <p className="font-quicksand text-gray-600 mb-6">
-            Untuk menggunakan fitur AR scan kartu, izinkan akses ke kamera
-            perangkat Anda.
+            Pastikan browser memiliki izin akses kamera dan tidak sedang
+            digunakan oleh aplikasi lain.
           </p>
-          <div className="flex gap-3">
-            <button
-              onClick={onClose}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg font-quicksand hover:bg-gray-50"
-            >
-              Batal
-            </button>
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+            <p className="font-quicksand text-yellow-800 text-sm">
+              💡 Tips: Coba refresh halaman atau gunakan simulasi AR di bawah
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
             <button
               onClick={startCamera}
-              className="flex-1 px-4 py-2 bg-historic-brown text-white rounded-lg font-quicksand hover:bg-historic-brown-dark"
+              className="px-4 py-2 bg-historic-brown text-white rounded-lg font-quicksand hover:bg-historic-brown-dark"
             >
               Coba Lagi
+            </button>
+            <button
+              onClick={() => {
+                // Simulate card detection without camera
+                setTimeout(() => {
+                  simulateCardDetection();
+                }, 1000);
+              }}
+              className="px-4 py-2 bg-historic-yellow text-historic-brown-dark rounded-lg font-quicksand hover:bg-historic-yellow-light"
+            >
+              🎲 Simulasi AR (Demo)
+            </button>
+            <button
+              onClick={onClose}
+              className="px-4 py-2 border border-gray-300 rounded-lg font-quicksand hover:bg-gray-50"
+            >
+              Batal
             </button>
           </div>
         </div>
