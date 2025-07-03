@@ -96,7 +96,7 @@ const AdminDashboard = () => {
 
       <Navbar />
 
-      <div className="flex-1 bg-gradient-to-r from-historic-cream-light to-historic-cream py-20 px-20">
+      <div className="flex-1 bg-gradient-to-r from-historic-cream-light to-historic-cream py-8 md:py-12 lg:py-20 px-4 md:px-8 lg:px-20">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
