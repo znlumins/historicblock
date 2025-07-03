@@ -133,6 +133,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       level: "Level 1 • Beginner",
       points: 0,
       avatar: null,
+      role: "user" as const,
     };
 
     setUser(userData);
