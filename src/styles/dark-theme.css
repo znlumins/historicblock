@@ -37,17 +37,21 @@
     @apply bg-gray-700;
   }
 
-  /* Text colors */
+  /* Text colors with better contrast */
   .text-gray-800 {
-    @apply text-gray-200;
+    @apply text-gray-100;
   }
 
   .text-gray-700 {
-    @apply text-gray-300;
+    @apply text-gray-200;
   }
 
   .text-gray-600 {
-    @apply text-gray-400;
+    @apply text-gray-300;
+  }
+
+  .text-gray-500 {
+    @apply text-gray-300;
   }
 
   /* Border colors */
@@ -84,5 +88,24 @@
 
   .shadow-xl {
     @apply shadow-gray-900/40;
+  }
+
+  /* Modal and dialog backgrounds */
+  .bg-white {
+    @apply dark:bg-gray-800;
+  }
+
+  /* Improved text contrast for better readability */
+  .text-black {
+    @apply dark:text-gray-100;
+  }
+
+  /* Button text improvements */
+  .text-historic-brown {
+    @apply dark:text-historic-yellow;
+  }
+
+  .text-historic-brown-dark {
+    @apply dark:text-historic-yellow;
   }
 }

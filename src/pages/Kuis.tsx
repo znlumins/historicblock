@@ -59,13 +59,13 @@ const Kuis = () => {
       {/* Manual Quiz Selection Dialog */}
       {showManualQuizDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-8 max-w-2xl mx-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 max-w-2xl mx-4">
             <div className="text-center mb-6">
               <div className="text-6xl mb-4">📚</div>
-              <h3 className="font-georgia text-2xl font-bold text-historic-brown-dark mb-2">
+              <h3 className="font-georgia text-2xl font-bold text-historic-brown-dark dark:text-historic-yellow mb-2">
                 Pilih Quiz Manual
               </h3>
-              <p className="font-quicksand text-gray-600">
+              <p className="font-quicksand text-gray-600 dark:text-gray-300">
                 Pilih quiz berdasarkan era atau tingkat kesulitan
               </p>
             </div>
@@ -76,14 +76,14 @@ const Kuis = () => {
                   setShowManualQuizDialog(false);
                   navigate("/quiz/quiz-proklamasi");
                 }}
-                className="p-4 border-2 border-gray-200 rounded-lg hover:border-historic-brown text-left transition-colors"
+                className="p-4 border-2 border-gray-200 dark:border-gray-600 rounded-lg hover:border-historic-brown dark:hover:border-historic-yellow text-left transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="font-quicksand font-bold text-historic-brown">
+                    <h4 className="font-quicksand font-bold text-historic-brown dark:text-historic-yellow">
                       Proklamasi Kemerdekaan
                     </h4>
-                    <p className="font-quicksand text-sm text-gray-600">
+                    <p className="font-quicksand text-sm text-gray-600 dark:text-gray-300">
                       Era Kemerdekaan • Mudah • 500 poin
                     </p>
                   </div>
@@ -96,14 +96,14 @@ const Kuis = () => {
                   setShowManualQuizDialog(false);
                   navigate("/quiz/quiz-majapahit");
                 }}
-                className="p-4 border-2 border-gray-200 rounded-lg hover:border-historic-brown text-left transition-colors"
+                className="p-4 border-2 border-gray-200 dark:border-gray-600 rounded-lg hover:border-historic-brown dark:hover:border-historic-yellow text-left transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="font-quicksand font-bold text-historic-brown">
+                    <h4 className="font-quicksand font-bold text-historic-brown dark:text-historic-yellow">
                       Kerajaan Majapahit
                     </h4>
-                    <p className="font-quicksand text-sm text-gray-600">
+                    <p className="font-quicksand text-sm text-gray-600 dark:text-gray-300">
                       Era Hindu-Buddha • Sedang • 750 poin
                     </p>
                   </div>
@@ -116,14 +116,14 @@ const Kuis = () => {
                   setShowManualQuizDialog(false);
                   navigate("/quiz/quiz-diponegoro");
                 }}
-                className="p-4 border-2 border-gray-200 rounded-lg hover:border-historic-brown text-left transition-colors"
+                className="p-4 border-2 border-gray-200 dark:border-gray-600 rounded-lg hover:border-historic-brown dark:hover:border-historic-yellow text-left transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="font-quicksand font-bold text-historic-brown">
+                    <h4 className="font-quicksand font-bold text-historic-brown dark:text-historic-yellow">
                       Perang Diponegoro
                     </h4>
-                    <p className="font-quicksand text-sm text-gray-600">
+                    <p className="font-quicksand text-sm text-gray-600 dark:text-gray-300">
                       Era Kolonial • Sulit • 1000 poin
                     </p>
                   </div>
@@ -134,7 +134,7 @@ const Kuis = () => {
 
             <button
               onClick={() => setShowManualQuizDialog(false)}
-              className="w-full px-6 py-3 border border-gray-300 rounded-lg font-quicksand hover:bg-gray-50 transition-colors"
+              className="w-full px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-quicksand hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-gray-700 dark:text-gray-300"
             >
               Batal
             </button>
@@ -145,30 +145,30 @@ const Kuis = () => {
       {/* Quiz Confirmation Dialog */}
       {showQuizDialog && detectedCard && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-8 max-w-lg mx-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 max-w-lg mx-4">
             <div className="text-center mb-6">
               <div className="text-6xl mb-4">🎯</div>
-              <h3 className="font-georgia text-2xl font-bold text-historic-brown-dark mb-2">
+              <h3 className="font-georgia text-2xl font-bold text-historic-brown-dark dark:text-historic-yellow mb-2">
                 Kartu Terdeteksi!
               </h3>
-              <div className="bg-historic-cream rounded-lg p-4 mb-4">
-                <h4 className="font-quicksand text-xl font-bold text-historic-brown">
+              <div className="bg-historic-cream dark:bg-gray-700 rounded-lg p-4 mb-4">
+                <h4 className="font-quicksand text-xl font-bold text-historic-brown dark:text-historic-yellow">
                   {detectedCard.name}
                 </h4>
-                <p className="font-quicksand text-gray-600 mt-1">
+                <p className="font-quicksand text-gray-600 dark:text-gray-300 mt-1">
                   Era: {detectedCard.era}
                 </p>
-                <p className="font-quicksand text-gray-600">
+                <p className="font-quicksand text-gray-600 dark:text-gray-300">
                   Tingkat: {detectedCard.difficulty}
                 </p>
-                <p className="font-merriweather text-sm text-gray-700 mt-2">
+                <p className="font-merriweather text-sm text-gray-700 dark:text-gray-200 mt-2">
                   {detectedCard.description}
                 </p>
               </div>
             </div>
 
             <div className="text-center mb-6">
-              <p className="font-quicksand text-gray-600">
+              <p className="font-quicksand text-gray-600 dark:text-gray-300">
                 Apakah Anda siap memulai kuis berdasarkan kartu ini?
               </p>
             </div>
@@ -176,7 +176,7 @@ const Kuis = () => {
             <div className="flex gap-3">
               <button
                 onClick={() => setShowQuizDialog(false)}
-                className="flex-1 px-6 py-3 border border-gray-300 rounded-lg font-quicksand hover:bg-gray-50 transition-colors"
+                className="flex-1 px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-quicksand hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-gray-700 dark:text-gray-300"
               >
                 Batal
               </button>
@@ -211,10 +211,10 @@ const Kuis = () => {
       <div className="flex-1 bg-gradient-to-r from-historic-cream-light to-historic-cream dark:from-gray-800 dark:to-gray-700 py-8 md:py-12 lg:py-20 px-4 md:px-8 lg:px-20 transition-colors">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="font-georgia text-4xl text-historic-brown-dark mb-4">
+            <h1 className="font-georgia text-4xl text-historic-brown-dark dark:text-historic-yellow mb-4">
               🎮 Kuis Historic Block
             </h1>
-            <p className="font-merriweather text-lg text-gray-700 max-w-2xl mx-auto">
+            <p className="font-merriweather text-lg text-gray-700 dark:text-gray-200 max-w-2xl mx-auto">
               Mulai petualangan sejarah Anda! Gunakan AR untuk memindai kartu
               Historic Block atau pilih kuis manual.
             </p>
@@ -222,25 +222,25 @@ const Kuis = () => {
 
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* AR Scan Option */}
-            <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg text-center border-2 border-historic-yellow hover:border-historic-orange transition-colors">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 md:p-8 shadow-lg text-center border-2 border-historic-yellow hover:border-historic-orange transition-colors">
               <div className="text-4xl md:text-6xl mb-4">📱</div>
-              <h2 className="font-quicksand text-xl md:text-2xl font-bold text-historic-brown-dark mb-4">
+              <h2 className="font-quicksand text-xl md:text-2xl font-bold text-historic-brown-dark dark:text-historic-yellow mb-4">
                 AR Scan Kartu
               </h2>
-              <p className="font-merriweather text-gray-600 mb-6">
+              <p className="font-merriweather text-gray-600 dark:text-gray-300 mb-6">
                 Gunakan kamera untuk memindai kartu Historic Block dan mulai
                 kuis sesuai kartu yang dipindai.
               </p>
               <div className="space-y-3 mb-6">
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                   <span className="mr-2">✅</span>
                   <span>Kuis disesuaikan dengan kartu</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                   <span className="mr-2">✅</span>
                   <span>Pengalaman AR interaktif</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                   <span className="mr-2">✅</span>
                   <span>Tingkat kesulitan otomatis</span>
                 </div>
@@ -255,25 +255,25 @@ const Kuis = () => {
             </div>
 
             {/* Manual Quiz Option */}
-            <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg text-center border-2 border-gray-200 hover:border-historic-yellow transition-colors">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 md:p-8 shadow-lg text-center border-2 border-gray-200 dark:border-gray-600 hover:border-historic-yellow transition-colors">
               <div className="text-4xl md:text-6xl mb-4">📚</div>
-              <h2 className="font-quicksand text-xl md:text-2xl font-bold text-historic-brown-dark mb-4">
+              <h2 className="font-quicksand text-xl md:text-2xl font-bold text-historic-brown-dark dark:text-historic-yellow mb-4">
                 Kuis Manual
               </h2>
-              <p className="font-merriweather text-gray-600 mb-6">
+              <p className="font-merriweather text-gray-600 dark:text-gray-300 mb-6">
                 Pilih sendiri topik dan tingkat kesulitan kuis sejarah yang
                 ingin Anda kerjakan.
               </p>
               <div className="space-y-3 mb-6">
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                   <span className="mr-2">✅</span>
                   <span>Pilih topik sejarah</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                   <span className="mr-2">✅</span>
                   <span>Atur tingkat kesulitan</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                   <span className="mr-2">✅</span>
                   <span>Akses semua periode</span>
                 </div>
@@ -289,40 +289,40 @@ const Kuis = () => {
           </div>
 
           {/* Quick Stats */}
-          <div className="mt-12 bg-white rounded-xl p-6 shadow-lg">
-            <h3 className="font-quicksand text-xl font-bold text-historic-brown-dark mb-4 text-center">
+          <div className="mt-12 bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+            <h3 className="font-quicksand text-xl font-bold text-historic-brown-dark dark:text-historic-yellow mb-4 text-center">
               📊 Statistik Cepat
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-historic-cream rounded-lg p-4">
-                <div className="font-quicksand text-2xl font-bold text-historic-brown">
+              <div className="bg-historic-cream dark:bg-gray-700 rounded-lg p-4">
+                <div className="font-quicksand text-2xl font-bold text-historic-brown dark:text-historic-yellow">
                   15
                 </div>
-                <div className="font-quicksand text-sm text-gray-600">
+                <div className="font-quicksand text-sm text-gray-600 dark:text-gray-300">
                   Kuis Selesai
                 </div>
               </div>
-              <div className="bg-historic-cream rounded-lg p-4">
-                <div className="font-quicksand text-2xl font-bold text-historic-brown">
+              <div className="bg-historic-cream dark:bg-gray-700 rounded-lg p-4">
+                <div className="font-quicksand text-2xl font-bold text-historic-brown dark:text-historic-yellow">
                   85%
                 </div>
-                <div className="font-quicksand text-sm text-gray-600">
+                <div className="font-quicksand text-sm text-gray-600 dark:text-gray-300">
                   Akurasi
                 </div>
               </div>
-              <div className="bg-historic-cream rounded-lg p-4">
-                <div className="font-quicksand text-2xl font-bold text-historic-brown">
+              <div className="bg-historic-cream dark:bg-gray-700 rounded-lg p-4">
+                <div className="font-quicksand text-2xl font-bold text-historic-brown dark:text-historic-yellow">
                   1,250
                 </div>
-                <div className="font-quicksand text-sm text-gray-600">
+                <div className="font-quicksand text-sm text-gray-600 dark:text-gray-300">
                   Total Poin
                 </div>
               </div>
-              <div className="bg-historic-cream rounded-lg p-4">
-                <div className="font-quicksand text-2xl font-bold text-historic-brown">
+              <div className="bg-historic-cream dark:bg-gray-700 rounded-lg p-4">
+                <div className="font-quicksand text-2xl font-bold text-historic-brown dark:text-historic-yellow">
                   #5
                 </div>
-                <div className="font-quicksand text-sm text-gray-600">
+                <div className="font-quicksand text-sm text-gray-600 dark:text-gray-300">
                   Ranking
                 </div>
               </div>
@@ -332,7 +332,7 @@ const Kuis = () => {
       </div>
 
       {/* Footer */}
-      <footer className="w-full bg-historic-brown border-t-4 border-historic-brown-dark py-6 md:py-9 px-4 md:px-8 lg:px-36">
+      <footer className="w-full bg-historic-brown dark:bg-gray-800 border-t-4 border-historic-brown-dark dark:border-gray-600 py-6 md:py-9 px-4 md:px-8 lg:px-36">
         <div className="max-w-6xl mx-auto text-center relative">
           {/* Logo */}
           <img
@@ -341,7 +341,7 @@ const Kuis = () => {
             className="w-[62px] h-[62px] mx-auto mb-4"
           />
 
-          <p className="font-merriweather text-historic-cream-light mb-6">
+          <p className="font-merriweather text-historic-cream-light dark:text-gray-300 mb-6">
             Belajar sejarah dengan cara yang menyenangkan
           </p>
 
@@ -349,7 +349,7 @@ const Kuis = () => {
           <div className="flex justify-center gap-6">
             <a
               href="#"
-              className="text-historic-cream-light hover:text-white transition-colors"
+              className="text-historic-cream-light dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors"
             >
               <svg
                 width="21"
