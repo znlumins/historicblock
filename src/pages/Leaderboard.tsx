@@ -150,10 +150,10 @@ const Leaderboard = () => {
       <section className="w-full bg-gradient-to-r from-historic-cream-light to-historic-cream dark:from-gray-800 dark:to-gray-700 py-8 md:py-12 lg:py-20 px-4 md:px-8 lg:px-20 flex-1 transition-colors">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="font-georgia text-5xl text-historic-brown-dark mb-4">
+            <h1 className="font-georgia text-5xl text-historic-brown-dark dark:text-historic-yellow mb-4">
               🏆 Papan Peringkat
             </h1>
-            <p className="font-merriweather text-xl text-gray-600">
+            <p className="font-merriweather text-xl text-gray-600 dark:text-gray-300">
               Para ahli sejarah terbaik dengan skor tertinggi
             </p>
           </div>
