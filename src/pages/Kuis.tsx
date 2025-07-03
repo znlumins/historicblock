@@ -373,7 +373,7 @@ const Kuis = () => {
             </a>
             <a
               href="#"
-              className="text-historic-cream-light hover:text-white transition-colors"
+              className="text-historic-cream-light dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors"
             >
               <svg
                 width="21"
@@ -397,7 +397,7 @@ const Kuis = () => {
             </a>
             <a
               href="#"
-              className="text-historic-cream-light hover:text-white transition-colors"
+              className="text-historic-cream-light dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors"
             >
               <svg
                 width="18"
