@@ -56,6 +56,92 @@ const Kuis = () => {
         />
       )}
 
+      {/* Manual Quiz Selection Dialog */}
+      {showManualQuizDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 max-w-2xl mx-4">
+            <div className="text-center mb-6">
+              <div className="text-6xl mb-4">📚</div>
+              <h3 className="font-georgia text-2xl font-bold text-historic-brown-dark mb-2">
+                Pilih Quiz Manual
+              </h3>
+              <p className="font-quicksand text-gray-600">
+                Pilih quiz berdasarkan era atau tingkat kesulitan
+              </p>
+            </div>
+
+            <div className="grid gap-4 mb-6">
+              <button
+                onClick={() => {
+                  setShowManualQuizDialog(false);
+                  navigate("/quiz/quiz-proklamasi");
+                }}
+                className="p-4 border-2 border-gray-200 rounded-lg hover:border-historic-brown text-left transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="font-quicksand font-bold text-historic-brown">
+                      Proklamasi Kemerdekaan
+                    </h4>
+                    <p className="font-quicksand text-sm text-gray-600">
+                      Era Kemerdekaan • Mudah ��� 500 poin
+                    </p>
+                  </div>
+                  <div className="text-2xl">🇮🇩</div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowManualQuizDialog(false);
+                  navigate("/quiz/quiz-majapahit");
+                }}
+                className="p-4 border-2 border-gray-200 rounded-lg hover:border-historic-brown text-left transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="font-quicksand font-bold text-historic-brown">
+                      Kerajaan Majapahit
+                    </h4>
+                    <p className="font-quicksand text-sm text-gray-600">
+                      Era Hindu-Buddha • Sedang • 750 poin
+                    </p>
+                  </div>
+                  <div className="text-2xl">👑</div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowManualQuizDialog(false);
+                  navigate("/quiz/quiz-diponegoro");
+                }}
+                className="p-4 border-2 border-gray-200 rounded-lg hover:border-historic-brown text-left transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="font-quicksand font-bold text-historic-brown">
+                      Perang Diponegoro
+                    </h4>
+                    <p className="font-quicksand text-sm text-gray-600">
+                      Era Kolonial • Sulit • 1000 poin
+                    </p>
+                  </div>
+                  <div className="text-2xl">⚔️</div>
+                </div>
+              </button>
+            </div>
+
+            <button
+              onClick={() => setShowManualQuizDialog(false)}
+              className="w-full px-6 py-3 border border-gray-300 rounded-lg font-quicksand hover:bg-gray-50 transition-colors"
+            >
+              Batal
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Quiz Confirmation Dialog */}
       {showQuizDialog && detectedCard && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
