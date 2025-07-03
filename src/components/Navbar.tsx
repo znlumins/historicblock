@@ -131,13 +131,6 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Mobile/Tablet User Dropdown - Show on mobile/tablet */}
-          {isAuthenticated && user && (
-            <div className="lg:hidden">
-              <UserDropdown userName={user.name} userLevel={user.level} />
-            </div>
-          )}
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
