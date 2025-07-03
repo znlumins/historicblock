@@ -173,7 +173,7 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-50">
-          <div className="bg-historic-brown w-full max-w-sm h-full shadow-lg">
+          <div className="bg-historic-brown w-full max-w-sm h-full shadow-lg overflow-y-auto">
             {/* Mobile Menu Header */}
             <div className="flex items-center justify-between p-4 border-b border-historic-brown-dark">
               <Link to="/" onClick={closeMobileMenu}>
