@@ -33,8 +33,8 @@ const Leaderboard = () => {
         },
         {
           id: "2",
-          name: "Sarah Wijayanti",
-          email: "sarah@example.com",
+          name: "Aymardayanti Pagril",
+          email: "aymarda@example.com",
           level: 12,
           score: 2180,
           accuracy: 89,
@@ -48,8 +48,8 @@ const Leaderboard = () => {
         },
         {
           id: "3",
-          name: "Ahmad Fauzi",
-          email: "ahmad@example.com",
+          name: "Adenia Raesita",
+          email: "adenia@example.com",
           level: 11,
           score: 1950,
           accuracy: 87,
@@ -63,8 +63,8 @@ const Leaderboard = () => {
         },
         {
           id: "4",
-          name: "Rina Putri",
-          email: "rina@example.com",
+          name: "Ahmad Fauzi",
+          email: "ahmad@example.com",
           level: 10,
           score: 1720,
           accuracy: 85,
@@ -78,8 +78,8 @@ const Leaderboard = () => {
         },
         {
           id: "5",
-          name: "Budi Santoso",
-          email: "budi@example.com",
+          name: "Rina Putri",
+          email: "rina@example.com",
           level: 9,
           score: 1580,
           accuracy: 83,
